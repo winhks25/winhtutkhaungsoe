@@ -37,3 +37,9 @@ The main page introduces Win, showcases three projects, describes his background
 - [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/)
 
 The implementation will use static output with no server adapter. All internal URLs and public assets must respect Astro's configured base path.
+
+## 2. Astro foundation
+
+Resolved Astro 7.3.4 from npm and selected Node.js 24, matching the local runtime and Astro's supported minimum (22.12.0). Set up strict TypeScript, a static build, a sitemap, and a shared base-aware URL helper. DM Sans and Instrument Serif are installed as font packages so production pages do not depend on a third-party font service.
+
+Created the `codex/portfolio` branch and committed the discovery notes before implementation. The repository has no existing application or user changes to preserve.
