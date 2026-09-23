@@ -117,3 +117,9 @@ Extracted four genuine screenshots from the PDF without alteration, replacing th
 Added `src/data/comatch.ts` and `src/styles/case-study.css`, and extended the shared project template conditionally so Fittix and Myanmar Community retain their original layouts. Documented sources, asset provenance, claim boundaries, and editing instructions in `docs/COMATCH-CASE-STUDY.md` and the architecture guide.
 
 Astro checking reported zero diagnostics and the production build passed. The complete browser suite passed 52 tests with two intentional skips, including 18 light/dark accessibility scans and the responsive width matrix. Verified all four displayed screenshots decode successfully, their built asset references respect the GitHub Pages base path, and the case-study section links navigate correctly. Visually reviewed the desktop dark page and mobile light layout. The local preview runs on port 4323. Preserved the user's pre-existing `index.astro` heading edit outside the commit.
+
+## 11. Real CoMatch screenshot in the homepage preview
+
+Replaced the CoMatch card’s illustrative mockup with the user-supplied screenshot from 23 September 2026 at 11:56:21 AM. The second supplied image served as a reference identifying the homepage card. Kept the screenshot unchanged, with responsive WebP delivery, its full aspect ratio, and the existing themed card surround. Changed the caption to “App screenshot” and allowed the image area to size naturally on mobile. The card still links to the CoMatch case study. Preserved the pre-existing homepage heading edit outside this change.
+
+Verification: Astro checking and the production build passed. Nine targeted browser checks passed with one intentional skip, covering homepage loading, CoMatch navigation, light/dark accessibility, and the responsive width matrix. Reviewed the screenshot card in the browser at mobile and desktop widths. Formatting and whitespace checks passed.

@@ -1,5 +1,7 @@
 ---
 import type { Project } from '../data/portfolio';
+import { Image } from 'astro:assets';
+import comatchPreview from '../assets/comatch/preview.png';
 interface Props {
   variant: Project['slug'];
 }
@@ -8,88 +10,17 @@ const { variant } = Astro.props;
 
 <div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
   {variant === 'comatch' && (
-    <div class="match-scene">
-      <div class="mock-browser">
-        <div class="mock-browser-bar">
-          <div class="browser-dots">
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-          <span>comatch / discover</span>
-          <span>↗</span>
-        </div>
-        <div class="match-app">
-          <div class="match-sidebar">
-            <b>
-              co<span>match.</span>
-            </b>
-            <div class="sidebar-active">⌘ &nbsp; Discover</div>
-            <div>▤ &nbsp; My projects</div>
-            <div>◌ &nbsp; Messages</div>
-            <div class="sidebar-profile">
-              <i>W</i>
-              <span>Let’s build something.</span>
-            </div>
-          </div>
-          <div class="match-content">
-            <div class="mock-eyebrow">BETTER, TOGETHER</div>
-            <h3>Find your people.</h3>
-            <p>Your next great project starts with a connection.</p>
-            <div class="mock-search">
-              ⌕ &nbsp; Explore projects and possibilities <span>↵</span>
-            </div>
-            <div class="match-tiles">
-              <div class="match-tile">
-                <span class="tile-icon">✳</span>
-                <b>
-                  Something worth
-                  <br />
-                  building.
-                </b>
-                <div class="mini-tags">
-                  <span>Design</span>
-                  <span>Development</span>
-                </div>
-                <div class="tile-footer">
-                  <div class="avatar-stack">
-                    <i>A</i>
-                    <i>J</i>
-                    <i>W</i>
-                  </div>
-                  <span>Connect ↗</span>
-                </div>
-              </div>
-              <div class="match-tile second-tile">
-                <span class="tile-icon tile-peach">↗</span>
-                <b>
-                  One idea.
-                  <br />
-                  Many possibilities.
-                </b>
-                <div class="mini-tags">
-                  <span>Web app</span>
-                  <span>Community</span>
-                </div>
-                <div class="tile-footer">
-                  <div class="avatar-stack">
-                    <i>S</i>
-                    <i>M</i>
-                  </div>
-                  <span>Connect ↗</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="match-toast">
-        <span class="toast-dot">✓</span>
-        <div>
-          <b>A connection is a beginning.</b>
-          <span>Make something great together.</span>
-        </div>
-      </div>
+    <div class="comatch-preview">
+      <Image
+        src={comatchPreview}
+        alt=""
+        widths={[480, 800, 1200, 1600]}
+        sizes="(max-width: 760px) 100vw, 720px"
+        format="webp"
+        quality={90}
+        loading="lazy"
+      />
+      <span class="preview-label">COMATCH · APP SCREENSHOT</span>
     </div>
   )}
   {variant === 'fittix' && (
@@ -168,5 +99,43 @@ const { variant } = Astro.props;
       </div>
     </div>
   )}
-  <span class="concept-label">INTERFACE CONCEPT</span>
+  {variant !== 'comatch' && (
+    <span class="concept-label">INTERFACE CONCEPT</span>
+  )}
 </div>
+
+<style>
+  .comatch-preview {
+    width: 100%;
+    padding: 28px;
+  }
+
+  .comatch-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+  }
+
+  .preview-label {
+    display: block;
+    margin-top: 16px;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 760px) {
+    .project-art.project-art-comatch {
+      height: auto;
+      min-height: 0;
+    }
+
+    .comatch-preview {
+      padding: 20px;
+    }
+  }
+</style>

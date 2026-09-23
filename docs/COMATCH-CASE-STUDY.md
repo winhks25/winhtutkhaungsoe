@@ -42,4 +42,4 @@ Astro generates responsive WebP copies for page display. The cover loads eagerly
 - `src/pages/work/[slug].astro`: case-study layout, reflection, and status. Extended sections apply only to CoMatch; other projects retain their existing structure.
 - `src/styles/case-study.css`: responsive gallery, section navigation, and extended case-study styling. Uses the shared light/dark tokens.
 
-The homepage’s illustrated CoMatch preview remains an explicitly labelled interface concept. The detailed CoMatch page uses the genuine screenshots instead. An existing user edit to the homepage heading (“My Projects.”) was preserved and is outside this change.
+The homepage CoMatch preview now uses `src/assets/comatch/preview.png`, copied unchanged from the user’s screenshot dated 23 September 2026 at 11:56:21 AM. `ProjectArtwork.astro` displays it as a responsive WebP with an “App screenshot” caption. The full image is visible without cropping, and mobile height follows its aspect ratio. The detailed CoMatch page continues to use the PDF screenshots. An existing user edit to the homepage heading (“My Projects.”) was preserved and is outside this change.
