@@ -4,12 +4,12 @@
 
 - Astro / TypeScript: zero errors, warnings, or hints.
 - Production build: five static pages generated successfully.
-- Playwright: 30 passed, two intentionally skipped, zero failed.
-- Axe: zero violations across the homepage and three project pages on desktop and mobile.
+- Playwright: 52 passed, two intentionally skipped, zero failed.
+- Axe: zero violations across 18 desktop/mobile scans: the homepage and three project pages in light mode, plus all five pages in dark mode.
 - Layout: no document overflow in the 25 page/viewport combinations.
-- Visual review: desktop and mobile homepage, mobile CoMatch page, refined project artwork, and social preview image checked.
+- Visual review: larger Farro typography and both appearances reviewed on desktop and mobile; the existing in-app preview was refreshed. The initial implementation also included detailed project-artwork and social-preview reviews.
 
-The final browser run completed in 20.7 seconds on the local macOS environment. GitHub Actions execution and public hosting remain unverified until publication.
+The final browser run after the Farro and dark-mode revision completed in 23.6 seconds on the local macOS environment. GitHub Actions execution and public hosting remain unverified until publication.
 
 ## Reproduce the checks
 
@@ -36,6 +36,11 @@ Playwright starts an isolated production preview at `http://127.0.0.1:4322/winht
 - Core content and navigation work with JavaScript disabled, including at 320px.
 - Canonical URLs, sitemap entries, and the social image respect the repository base path.
 - The custom 404 leads back home, and keyboard users can skip to main content.
+- Dark mode initially follows the system, reacts to system changes, and respects a manual override.
+- Keyboard theme changes persist across project navigation and reloads and synchronise between open tabs.
+- A stored preference is applied before the body is parsed, avoiding an initial incorrect appearance.
+- Blocked storage still allows in-page switching; JavaScript-disabled pages follow the system through CSS.
+- All five pages pass dark-mode axe scans on desktop and mobile.
 
 The same scenarios run in desktop Chromium and Pixel 7 emulation. The desktop mobile-menu test and the duplicate mobile viewport-matrix test are intentionally skipped. Mobile emulation is not a physical-device test, and automated axe checks are not a full manual accessibility audit.
 
@@ -44,6 +49,8 @@ The same scenarios run in desktop Chromium and Pixel 7 emulation. The desktop mo
 Screenshots are kept in ignored `tmp/screenshots/` during development. Review the complete homepage, project pages, and social card for spacing, typography, clipping, and overflow. The original résumé was also rendered and visually inspected before its content was used.
 
 The first browser pass caught low-contrast secondary labels. These were fixed in the stylesheet, including the decorative artwork. The mobile CoMatch case-study artwork received extra room so its floating card does not crowd the concept label.
+
+The dark-mode revision caught one caption that overlapped a light product illustration on mobile. Captions now use an opaque themed surface and sit in the opposite corner from the floating cards; the complete suite passed after that correction.
 
 Generated Playwright reports and traces are excluded from TypeScript checking. Without these exclusions, Astro’s broad source scan can traverse bundled report scripts and waste substantial memory; source and test TypeScript remain checked.
 

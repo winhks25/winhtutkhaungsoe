@@ -13,6 +13,8 @@ interface Props {
     | 'github'
     | 'linkedin'
     | 'code'
+    | 'sun'
+    | 'moon'
     | 'check';
   size?: number;
   class?: string;
@@ -33,6 +35,8 @@ const paths: Record<Props['name'], string> = {
   linkedin: 'M4 9v11M4 4v.01M10 20V9h4v2c1-3 6-3 6 2v7M14 20v-7',
   code: 'm8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18',
   check: 'm5 12 4 4L19 6',
+  sun: 'M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5',
+  moon: 'M20.5 13.5A9 9 0 0 1 10.5 3.5a9 9 0 1 0 10 10Z',
 };
 ---
 

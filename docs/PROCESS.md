@@ -81,3 +81,13 @@ Raised primary body copy to 17–18px, navigation to 16px, tags and dates to at 
 Dark mode is the next milestone: an accessible header toggle, saved preference, system-colour preference on first visit, and contrast verification in both appearances.
 
 Typography milestone checks: Astro reported zero diagnostics; the static build passed; all eight light-mode axe scans and the 25-combination layout matrix passed (nine tests, one intentional skip).
+
+## 7. Dark appearance and saved preference
+
+Added a keyboard-accessible header toggle with an announced pressed state. The initial appearance follows the operating system; a manual choice is saved in `localStorage` and survives navigation and reloads. An inline head script resolves the appearance before the body is parsed, avoiding a flash of the wrong theme. Open tabs synchronise preference changes. If storage is blocked, the toggle still changes the current page, and the CSS-only system preference works without JavaScript.
+
+Moved page colours to semantic tokens in `src/styles/themes.css`. Dark mode uses forest backgrounds, warm light text, brighter sage actions, visible focus outlines, and matching artwork surrounds. The illustrated product windows retain their original palettes, with explicit text colours. The larger type and added toggle required a 900px navigation breakpoint and a separate full-width navigation row when JavaScript is unavailable.
+
+Added tests for initial system preference, live system changes, manual override, keyboard toggling, navigation/reload persistence, appearance before body parsing, blocked storage, cross-tab synchronisation, and dark-mode accessibility on all five pages. The first complete run passed 51 checks and caught one overlapping illustration caption on mobile; gave captions an opaque themed background and moved them away from the floating mockup cards.
+
+The final build and Astro/TypeScript check passed with zero diagnostics. The complete suite finished with **52 passing tests**, **two intentional skips**, and **zero accessibility violations across 18 light/dark page scans**. The viewport matrix still passed at 320, 390, 768, 1024, and 1440 pixels. Reviewed light/dark desktop screenshots and the dark mobile page, then refreshed the user's existing in-app preview. Updated the README, architecture guide, and verification notes. Recorded the revision as separate typography and dark-mode commits.

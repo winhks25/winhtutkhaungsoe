@@ -28,6 +28,17 @@ const sectionLink = (id: string) =>
         <span class="sr-only"> (PDF, opens in a new tab)</span>
       </a>
       <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Dark mode"
+        aria-pressed="false"
+        title="Switch to dark mode"
+        hidden
+      >
+        <Icon name="moon" class="theme-moon" />
+        <Icon name="sun" class="theme-sun" />
+      </button>
+      <button
         class="menu-toggle"
         type="button"
         aria-expanded="false"
@@ -96,7 +107,7 @@ const sectionLink = (id: string) =>
         closeMenu();
     });
     window
-      .matchMedia('(min-width: 761px)')
+      .matchMedia('(min-width: 901px)')
       .addEventListener('change', (event) => {
         if (event.matches) closeMenu();
       });

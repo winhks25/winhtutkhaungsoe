@@ -1,11 +1,12 @@
 # Win Htut Khaung Soe — Portfolio
 
-A personal portfolio built with Astro 7 and strict TypeScript. Warm neutrals, forest green, editorial typography, and original interface illustrations bring résumé-based content to a lightweight static website.
+A personal portfolio built with Astro 7 and strict TypeScript. Bold Farro typography, readable text, light and dark appearances, and original interface illustrations bring résumé-based content to a lightweight static website.
 
 - Responsive homepage with selected work, background, skills, experience, and contact.
 - Dedicated pages for CoMatch, Fittix, and the Myanmar Community at NUS website.
 - Downloadable résumé, accessible mobile navigation, and email copying.
 - Local fonts, social preview image, structured metadata, sitemap, and custom 404.
+- System-aware dark mode with a saved preference and an accessible header toggle.
 - GitHub Pages deployment with automated browser and accessibility checks.
 
 ## Develop
@@ -46,7 +47,8 @@ Tests start their own production preview on port **4322** and run in desktop and
 | Profile, project descriptions, experience, skills | `src/data/portfolio.ts`            |
 | Homepage layout and introduction                  | `src/pages/index.astro`            |
 | Reusable project page                             | `src/pages/work/[slug].astro`      |
-| Colours, type, layout, responsive rules           | `src/styles/global.css`            |
+| Type, layout, responsive rules                    | `src/styles/global.css`            |
+| Light and dark colour tokens                      | `src/styles/themes.css`            |
 | Résumé PDF                                        | `public/resume.pdf`                |
 | Hosting domain and repository path                | `astro.config.mjs`                 |
 | Social preview image source                       | `scripts/generate-social-card.mjs` |

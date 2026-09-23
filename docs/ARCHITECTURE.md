@@ -21,20 +21,27 @@ src/
   pages/index.astro          Homepage
   pages/404.astro            Custom error page
   pages/work/[slug].astro    Statically generated project pages
-  styles/global.css         Design tokens and all responsive styling
+  styles/global.css         Typography and responsive styling
+  styles/themes.css         Light and dark colour tokens
   utils/paths.ts             Base-aware internal URLs
 tests/portfolio.spec.ts     Browser and accessibility checks
 ```
 
 ## Visual system
 
-The CSS variables at the top of `global.css` define paper, ink, forest green, muted text, borders, and sage backgrounds. Typography uses locally bundled DM Sans and italic Instrument Serif. The design works without remote fonts or image providers.
+`themes.css` defines semantic colours for paper, ink, muted text, borders, surfaces, actions, and artwork surrounds. It provides light and dark values, including a CSS-only fallback for the system preference. `global.css` consumes those tokens instead of fixing content to a single palette.
+
+Typography uses locally hosted Farro Medium (500) for body copy and Bold (700) for headings and primary controls. Body copy is 17–18px, navigation is 16px, tags and dates are at least 14px, and section labels are 12px. The former serif accents have been removed. Both font weights are real font files, not synthetic bold. The design works without remote fonts or image providers.
 
 HTML/CSS/SVG illustrations are decorative, with no focusable elements. Their small interface text is illustrative; actual project descriptions remain available as ordinary readable text outside the artwork. Each illustration carries a visible concept label.
 
-Breakpoints at 1100px, 760px, and 390px adapt the grid and artwork. Reduced-motion preferences disable smooth scrolling and hover transitions. Basic print styles simplify the page.
+Breakpoints at 1100px, 760px, and 390px adapt the grid and artwork. Navigation collapses at 900px to accommodate the larger type and appearance control. Reduced-motion preferences disable smooth scrolling and hover transitions. Print styles use a light palette regardless of the selected theme.
 
 ## Progressive enhancement
+
+`ThemeController.astro` runs inline in the head, before the body paints. The `portfolio-theme` local-storage value is accepted only when it is `light` or `dark`; otherwise the system preference is used. A manual choice overrides subsequent system changes. The toggle has a stable “Dark mode” accessible label, an `aria-pressed` state, and a tooltip describing the next action. Preference changes synchronise across tabs through the storage event.
+
+The toggle is hidden until its handler is ready. Storage exceptions are caught, so switching still works for the current page. Without JavaScript, CSS follows the operating system and the inactive toggle stays hidden. Browser toolbar colours follow the selected theme through `theme-color` metadata.
 
 The mobile menu button is only revealed after its handler is installed. Without JavaScript, ordinary navigation remains visible. The menu closes after section selection, outside clicks, Escape, or a switch to desktop width. Escape returns focus to the toggle.
 

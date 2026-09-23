@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ThemeController from '../components/ThemeController.astro';
 import { profile } from '../data/portfolio';
 import { localPath } from '../utils/paths';
 import '../styles/global.css';
@@ -42,6 +43,7 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f7f8f2" />
+    <ThemeController />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
