@@ -63,3 +63,11 @@ The initial axe scans identified insufficient contrast in several muted labels a
 Reviewed the complete desktop homepage, mobile homepage, mobile CoMatch page, and generated 1200 × 630 social card. The interface stays fully static; only the menu, section indicator, and clipboard control need JavaScript.
 
 The final verification completed with **30 passing browser tests**, **two intentional skips**, and **zero axe violations** across the eight desktop/mobile page scans. Astro reported zero errors, warnings, or hints. All five static pages built successfully. Also excluded generated browser reports from TypeScript analysis after a repeat check attempted to scan their bundled scripts, and isolated the test preview on port 4322 with foreground execution.
+
+## 5. Delivery and deployment setup
+
+Added a GitHub Actions workflow that validates pull requests and publishes successful `main` builds to GitHub Pages. Verified the official action release versions against GitHub's API: checkout 7.0.1, setup-node 7.0.0, upload-pages-artifact 5.0.0, and deploy-pages 5.0.1. Only the publishing job receives deployment permissions.
+
+Completed the README, architecture guide, deployment instructions, and verification notes. Work is recorded in five meaningful commits covering discovery, scaffolding, implementation, testing/refinement, and deployment/documentation. The local preview is available at `http://127.0.0.1:4321/winhtutkhaungsoe/` while the preview server is running.
+
+The site is ready for first publication. No source was pushed and no remote settings were changed. To publish, enable GitHub Actions as the Pages source and push the reviewed portfolio to `main`, following `docs/DEPLOYMENT.md`.

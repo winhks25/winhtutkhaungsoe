@@ -1,6 +1,12 @@
 # Win Htut Khaung Soe — Portfolio
 
-A modern, minimalist portfolio built with Astro and TypeScript. Statically generated for GitHub Pages, with locally hosted fonts and résumé-based content.
+A personal portfolio built with Astro 7 and strict TypeScript. Warm neutrals, forest green, editorial typography, and original interface illustrations bring résumé-based content to a lightweight static website.
+
+- Responsive homepage with selected work, background, skills, experience, and contact.
+- Dedicated pages for CoMatch, Fittix, and the Myanmar Community at NUS website.
+- Downloadable résumé, accessible mobile navigation, and email copying.
+- Local fonts, social preview image, structured metadata, sitemap, and custom 404.
+- GitHub Pages deployment with automated browser and accessibility checks.
 
 ## Develop
 
@@ -19,9 +25,47 @@ npm run build
 npm run preview
 ```
 
-## Project notes
+The configured base path also applies locally. Visit `/winhtutkhaungsoe/`, not just `/`.
+
+## Verify
+
+```sh
+npx playwright install chromium
+npm run format:check
+npm run check
+npm run build
+npm test
+```
+
+Tests start their own production preview on port **4322** and run in desktop and mobile Chromium. The normal preview uses port **4321**. For the interactive test runner, use `npm run test:ui`. To format source files, use `npm run format`.
+
+## Edit the content
+
+| What                                              | Where                              |
+| ------------------------------------------------- | ---------------------------------- |
+| Profile, project descriptions, experience, skills | `src/data/portfolio.ts`            |
+| Homepage layout and introduction                  | `src/pages/index.astro`            |
+| Reusable project page                             | `src/pages/work/[slug].astro`      |
+| Colours, type, layout, responsive rules           | `src/styles/global.css`            |
+| Résumé PDF                                        | `public/resume.pdf`                |
+| Hosting domain and repository path                | `astro.config.mjs`                 |
+| Social preview image source                       | `scripts/generate-social-card.mjs` |
+
+Run `npm run social:generate` after changing the social card’s source. It uses Playwright and local fonts; no external service is needed. Commit the generated `public/social-card.png` as well as the source change.
+
+All project artwork is illustrative and labelled **Interface concept**. The supplied résumé is the source for biographical claims and project repository links. Fittix has no repository link because none was supplied.
+
+## Publish
+
+Configured destination: [winhks25.github.io/winhtutkhaungsoe](https://winhks25.github.io/winhtutkhaungsoe/).
+
+Set the repository’s **Settings → Pages → Build and deployment → Source** to **GitHub Actions**, then publish the reviewed changes to `main`. The workflow checks the site and deploys the generated `dist/` directory. This implementation is committed locally; publication is a separate step.
+
+See the [deployment guide](docs/DEPLOYMENT.md) for first publication, custom domains, and troubleshooting.
+
+## Documentation
 
 - [Process journal](docs/PROCESS.md)
-- Production URL: `https://winhks25.github.io/winhtutkhaungsoe/`
-
-Deployment and maintenance documentation will be completed with the corresponding implementation milestones.
+- [Architecture and maintenance](docs/ARCHITECTURE.md)
+- [Deployment guide](docs/DEPLOYMENT.md)
+- [Verification notes](docs/TESTING.md)
