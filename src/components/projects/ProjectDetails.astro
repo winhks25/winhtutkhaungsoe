@@ -1,0 +1,131 @@
+---
+import type { ProjectDetails as ProjectDetailsContent } from '../../data/project-details';
+import { localPath } from '../../utils/paths';
+import Icon from '../Icon.astro';
+import ProjectSection from './ProjectSection.astro';
+import ProjectParagraphs from './ProjectParagraphs.astro';
+import ProjectFeatures from './ProjectFeatures.astro';
+
+interface Props {
+  name: string;
+  content: ProjectDetailsContent;
+}
+const { name, content } = Astro.props;
+---
+
+<article class="project-details container" aria-labelledby="project-heading">
+  <header class="case-intro project-header">
+    <a class="text-link case-back" href={`${localPath()}#work`}>
+      <Icon name="arrow-left" size={17} /> All projects
+    </a>
+    <h1 id="project-heading">
+      {name}
+      <span>.</span>
+    </h1>
+    <div class="project-summary">
+      <section class="project-overview" aria-labelledby="overview-heading">
+        <h2 class="eyebrow" id="overview-heading">
+          Overview
+        </h2>
+        <p>{content.overview}</p>
+      </section>
+      <div class="project-facts">
+        <section aria-labelledby="role-heading">
+          <h2 class="eyebrow" id="role-heading">
+            Role
+          </h2>
+          <p>{content.role}</p>
+        </section>
+        <section aria-labelledby="stack-heading">
+          <h2 class="eyebrow" id="stack-heading">
+            Tech Stack
+          </h2>
+          <ul class="project-stack" role="list">
+            {content.stack.map((technology) => (
+              <li>{technology}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </header>
+  <ProjectSection id="contributions-heading" title="My Contributions">
+    <ProjectParagraphs paragraphs={content.contributions} />
+  </ProjectSection>
+  <ProjectSection id="features-heading" title="Key Features">
+    <ProjectFeatures features={content.features} />
+  </ProjectSection>
+  <ProjectSection id="learnings-heading" title="What I Learned">
+    <ProjectParagraphs paragraphs={content.learnings} />
+  </ProjectSection>
+</article>
+
+<style>
+  .project-details {
+    max-width: 1180px;
+  }
+  .project-header {
+    padding-bottom: 44px;
+  }
+  .project-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: 64px;
+    margin-top: 36px;
+  }
+  .eyebrow {
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .project-overview p {
+    font-size: 19px;
+    line-height: 1.85;
+  }
+  .project-facts {
+    display: grid;
+    align-content: start;
+    gap: 28px;
+    padding-left: 32px;
+    border-left: 1px solid var(--line);
+  }
+  .project-facts p {
+    font-size: 17px;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .project-stack li {
+    padding: 5px 10px;
+    background: var(--tag-bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  @media (max-width: 760px) {
+    .project-header {
+      padding-bottom: 32px;
+    }
+    .project-summary {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 28px;
+    }
+    .project-overview p {
+      font-size: 18px;
+    }
+    .project-facts {
+      border-left: 0;
+      padding-left: 0;
+      gap: 24px;
+    }
+    .eyebrow {
+      margin-bottom: 12px;
+    }
+  }
+</style>

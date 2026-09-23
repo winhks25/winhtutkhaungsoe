@@ -1,0 +1,49 @@
+---
+import type { ProjectFeature } from '../../data/project-details';
+
+interface Props {
+  features: ProjectFeature[];
+}
+const { features } = Astro.props;
+---
+
+<ul class="project-features">
+  {features.map((feature) => (
+    <li>
+      <h3>{feature.title}</h3>
+      <p>{feature.description}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .project-features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    border-top: 2px solid var(--accent);
+    padding-top: 18px;
+  }
+  h3 {
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+  p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  @media (max-width: 760px) {
+    .project-features {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
