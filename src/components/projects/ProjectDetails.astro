@@ -36,7 +36,7 @@ const { name, content } = Astro.props;
         <h2 class="eyebrow" id="overview-heading">
           Overview
         </h2>
-        <p>{content.overview}</p>
+        <ProjectParagraphs paragraphs={content.overview} variant="lead" />
       </section>
       <div class="project-facts">
         <section aria-labelledby="role-heading">
@@ -55,6 +55,18 @@ const { name, content } = Astro.props;
             ))}
           </ul>
         </section>
+        {content.status && content.status.length > 0 && (
+          <section aria-labelledby="status-heading">
+            <h2 class="eyebrow" id="status-heading">
+              Status
+            </h2>
+            <ul class="project-status" role="list">
+              {content.status.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
   </header>
@@ -89,10 +101,6 @@ const { name, content } = Astro.props;
     color: var(--muted);
     margin-bottom: 16px;
   }
-  .project-overview p {
-    font-size: 19px;
-    line-height: 1.85;
-  }
   .project-facts {
     display: grid;
     align-content: start;
@@ -102,6 +110,18 @@ const { name, content } = Astro.props;
   }
   .project-facts p {
     font-size: 17px;
+  }
+  .project-status {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding-left: 18px;
+    list-style: disc;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .project-status li::marker {
+    color: var(--accent);
   }
   .project-stack {
     display: flex;
@@ -127,9 +147,6 @@ const { name, content } = Astro.props;
       grid-template-columns: 1fr;
       gap: 28px;
       margin-top: 28px;
-    }
-    .project-overview p {
-      font-size: 18px;
     }
     .project-facts {
       border-left: 0;

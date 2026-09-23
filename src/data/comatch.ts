@@ -23,8 +23,11 @@ export const comatchDetails = {
       href: 'https://drive.google.com/file/d/1wgBVu-Bw6yaJ8lQwJnzSLLG81Xzvedm5/view?usp=sharing',
     },
   ],
-  overview:
-    'CoMatch is a web platform designed to help students and young adults find compatible teammates for academic projects, hackathons, competitions, and independent projects. Users can create project spaces, publish recruitment posts, apply for specific roles, manage applications, and communicate with potential teammates through real-time messaging.',
+  overview: [
+    [
+      'CoMatch is a web platform designed to help students and young adults find compatible teammates for academic projects, hackathons, competitions, and independent projects. Users can create project spaces, publish recruitment posts, apply for specific roles, manage applications, and communicate with potential teammates through real-time messaging.',
+    ],
+  ],
   role: 'Full-stack developer',
   stack: [
     'Next.js',

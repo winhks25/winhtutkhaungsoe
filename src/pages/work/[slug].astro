@@ -7,6 +7,7 @@ import Contact from '../../components/Contact.astro';
 import { projects, type Project } from '../../data/portfolio';
 import { localPath } from '../../utils/paths';
 import ProjectDetails from '../../components/projects/ProjectDetails.astro';
+import { projectText } from '../../data/project-details';
 import '../../styles/case-study.css';
 export const getStaticPaths = (() =>
   projects.map((project, index) => ({
@@ -23,7 +24,9 @@ const { project, next } = Astro.props;
 <BaseLayout
   title={`${project.name} — Win Htut Khaung Soe`}
   description={
-    'details' in project ? project.details.overview : project.description
+    'details' in project
+      ? projectText(project.details.overview)
+      : project.description
   }
 >
   {'details' in project ? (

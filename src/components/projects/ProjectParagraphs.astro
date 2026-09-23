@@ -3,15 +3,24 @@ import type { ProjectParagraph } from '../../data/project-details';
 
 interface Props {
   paragraphs: ProjectParagraph[];
+  variant?: 'body' | 'lead';
 }
-const { paragraphs } = Astro.props;
+const { paragraphs, variant = 'body' } = Astro.props;
 ---
 
-<div class="project-prose">
+<div
+  class:list={['project-prose', { 'project-prose-lead': variant === 'lead' }]}
+>
   {paragraphs.map((paragraph) => (
     <p>
       {paragraph.map((part) =>
-        typeof part === 'string' ? part : <strong>{part.strong}</strong>,
+        typeof part === 'string' ? (
+          part
+        ) : 'strong' in part ? (
+          <strong>{part.strong}</strong>
+        ) : (
+          <code>{part.code}</code>
+        ),
       )}
     </p>
   ))}
@@ -27,5 +36,23 @@ const { paragraphs } = Astro.props;
   }
   strong {
     color: var(--ink);
+  }
+  code {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    color: var(--ink);
+    background: var(--surface);
+    padding: 2px 5px;
+    border-radius: 3px;
+    overflow-wrap: anywhere;
+  }
+  .project-prose-lead {
+    color: var(--ink);
+    font-size: 19px;
+  }
+  @media (max-width: 760px) {
+    .project-prose-lead {
+      font-size: 18px;
+    }
   }
 </style>
