@@ -43,3 +43,13 @@ The implementation will use static output with no server adapter. All internal U
 Resolved Astro 7.3.4 from npm and selected Node.js 24, matching the local runtime and Astro's supported minimum (22.12.0). Set up strict TypeScript, a static build, a sitemap, and a shared base-aware URL helper. DM Sans and Instrument Serif are installed as font packages so production pages do not depend on a third-party font service.
 
 Created the `codex/portfolio` branch and committed the discovery notes before implementation. The repository has no existing application or user changes to preserve.
+
+## 3. Portfolio implementation
+
+Built the homepage, three dedicated project pages, and a custom 404 page. Centralised biographical content, skills, experience, and project descriptions in `src/data/portfolio.ts`.
+
+The design combines DM Sans with italic Instrument Serif, off-white backgrounds, green accents, and lightweight geometric artwork. All artwork is native HTML/CSS/SVG: no image service, component framework, or animation library is required. Project visuals carry an “interface concept” label; they are illustrative, not product screenshots. The project pages explain only work supported by the supplied résumé. Fittix is described as ongoing development and has no fabricated repository or demo link.
+
+Added responsive navigation with an Escape-key dismissal, an accessible skip link, reduced-motion support, contact links, clipboard feedback, résumé viewing and downloading, and shared SEO metadata. Core content and navigation remain usable when JavaScript is disabled. Copied the supplied résumé unchanged to `public/resume.pdf`.
+
+The initial implementation passed Astro checking with zero errors, warnings, or hints, and generated all five static pages. The browser verification phase follows before the final implementation commit.

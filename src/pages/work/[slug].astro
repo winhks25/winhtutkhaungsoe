@@ -1,0 +1,103 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectArtwork from '../../components/ProjectArtwork.astro';
+import Icon from '../../components/Icon.astro';
+import Contact from '../../components/Contact.astro';
+import { projects, type Project } from '../../data/portfolio';
+import { localPath } from '../../utils/paths';
+export const getStaticPaths = (() =>
+  projects.map((project, index) => ({
+    params: { slug: project.slug },
+    props: { project, next: projects[(index + 1) % projects.length] },
+  }))) satisfies GetStaticPaths;
+interface Props {
+  project: Project;
+  next: Project;
+}
+const { project, next } = Astro.props;
+---
+
+<BaseLayout
+  title={`${project.name} — Win Htut Khaung Soe`}
+  description={project.description}
+>
+  <section class="case-intro container" aria-labelledby="project-heading">
+    <a class="text-link case-back" href={`${localPath()}#work`}>
+      <Icon name="arrow-left" size={17} /> All projects
+    </a>
+    <div class="eyebrow section-label">
+      <span>{project.number} /</span> {project.category}
+    </div>
+    <h1 id="project-heading">
+      {project.name}
+      <span>.</span>
+    </h1>
+    <p class="case-headline">{project.headline}</p>
+    <div class="case-meta">
+      <div>
+        <span class="eyebrow">MY ROLE</span>
+        <span>{project.role}</span>
+      </div>
+      <div>
+        <span class="eyebrow">TIMELINE</span>
+        <span>{project.period}</span>
+      </div>
+      <div>
+        <span class="eyebrow">BUILT WITH</span>
+        <span>{project.stack.join(' · ')}</span>
+      </div>
+      {project.repository && (
+        <a
+          class="button button-outline"
+          href={project.repository}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View repository <Icon name="arrow-up-right" size={17} />
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      )}
+    </div>
+    <div class="case-art">
+      <ProjectArtwork variant={project.slug} />
+    </div>
+  </section>
+  <section class="case-body container" aria-labelledby="context-heading">
+    <div class="case-section">
+      <div class="eyebrow">THE CONTEXT</div>
+      <div>
+        <h2 id="context-heading">
+          Built around <em>people.</em>
+        </h2>
+        <p>{project.context}</p>
+      </div>
+    </div>
+    <div class="case-section">
+      <div class="eyebrow">MY CONTRIBUTIONS</div>
+      <div class="contributions">
+        {project.contributions.map((item, index) => (
+          <article>
+            <span class="contribution-number">0{index + 1}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+    <div class="case-section case-focus">
+      <div class="eyebrow">TECHNICAL FOCUS</div>
+      <p>{project.focus}</p>
+    </div>
+  </section>
+  <div class="container next-project">
+    <span class="eyebrow">NEXT PROJECT</span>
+    <a href={localPath(`work/${next.slug}/`)}>
+      {next.name}
+      <Icon name="arrow-up-right" size={36} />
+    </a>
+  </div>
+  <Contact />
+</BaseLayout>

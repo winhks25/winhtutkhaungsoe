@@ -1,0 +1,124 @@
+---
+import Icon from './Icon.astro';
+import { localPath } from '../utils/paths';
+const { isHome = false } = Astro.props;
+const sectionLink = (id: string) =>
+  isHome ? `#${id}` : `${localPath()}#${id}`;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href={localPath()} aria-label="Win — home">
+      win<span>.</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href={sectionLink('work')}>Work</a>
+      <a href={sectionLink('about')}>About</a>
+      <a href={sectionLink('experience')}>Experience</a>
+      <a href={sectionLink('contact')}>Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a
+        class="resume-link"
+        href={localPath('resume.pdf')}
+        target="_blank"
+        rel="noopener"
+      >
+        Résumé <Icon name="arrow-up-right" size={16} />
+        <span class="sr-only"> (PDF, opens in a new tab)</span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation"
+      >
+        <Icon name="menu" />
+        <Icon name="close" />
+      </button>
+    </div>
+  </div>
+  <nav
+    id="mobile-nav"
+    class="mobile-nav container"
+    aria-label="Mobile navigation"
+    hidden
+  >
+    <a href={sectionLink('work')}>
+      Work <span>01</span>
+    </a>
+    <a href={sectionLink('about')}>
+      About <span>02</span>
+    </a>
+    <a href={sectionLink('experience')}>
+      Experience <span>03</span>
+    </a>
+    <a href={sectionLink('contact')}>
+      Contact <Icon name="arrow-up-right" />
+    </a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-nav');
+  if (toggle && menu) {
+    toggle.dataset.ready = 'true';
+    const closeMenu = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      menu.hidden = true;
+    };
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute(
+        'aria-label',
+        open ? 'Close navigation' : 'Open navigation',
+      );
+      menu.hidden = !open;
+    });
+    menu
+      .querySelectorAll('a')
+      .forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (
+        event.target instanceof Node &&
+        !document.querySelector('.site-header')?.contains(event.target)
+      )
+        closeMenu();
+    });
+    window
+      .matchMedia('(min-width: 761px)')
+      .addEventListener('change', (event) => {
+        if (event.matches) closeMenu();
+      });
+  }
+
+  const sections = document.querySelectorAll<HTMLElement>('main > section[id]');
+  if ('IntersectionObserver' in window && sections.length) {
+    const links =
+      document.querySelectorAll<HTMLAnchorElement>('.desktop-nav a');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          links.forEach((link) => {
+            if (link.hash === `#${entry.target.id}`)
+              link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+          });
+        });
+      },
+      { rootMargin: '-15% 0px -55% 0px', threshold: 0 },
+    );
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>

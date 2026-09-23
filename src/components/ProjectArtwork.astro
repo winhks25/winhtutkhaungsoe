@@ -1,0 +1,172 @@
+---
+import type { Project } from '../data/portfolio';
+interface Props {
+  variant: Project['slug'];
+}
+const { variant } = Astro.props;
+---
+
+<div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
+  {variant === 'comatch' && (
+    <div class="match-scene">
+      <div class="mock-browser">
+        <div class="mock-browser-bar">
+          <div class="browser-dots">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <span>comatch / discover</span>
+          <span>↗</span>
+        </div>
+        <div class="match-app">
+          <div class="match-sidebar">
+            <b>
+              co<span>match.</span>
+            </b>
+            <div class="sidebar-active">⌘ &nbsp; Discover</div>
+            <div>▤ &nbsp; My projects</div>
+            <div>◌ &nbsp; Messages</div>
+            <div class="sidebar-profile">
+              <i>W</i>
+              <span>Let’s build something.</span>
+            </div>
+          </div>
+          <div class="match-content">
+            <div class="mock-eyebrow">BETTER, TOGETHER</div>
+            <h3>Find your people.</h3>
+            <p>Your next great project starts with a connection.</p>
+            <div class="mock-search">
+              ⌕ &nbsp; Explore projects and possibilities <span>↵</span>
+            </div>
+            <div class="match-tiles">
+              <div class="match-tile">
+                <span class="tile-icon">✳</span>
+                <b>
+                  Something worth
+                  <br />
+                  building.
+                </b>
+                <div class="mini-tags">
+                  <span>Design</span>
+                  <span>Development</span>
+                </div>
+                <div class="tile-footer">
+                  <div class="avatar-stack">
+                    <i>A</i>
+                    <i>J</i>
+                    <i>W</i>
+                  </div>
+                  <span>Connect ↗</span>
+                </div>
+              </div>
+              <div class="match-tile second-tile">
+                <span class="tile-icon tile-peach">↗</span>
+                <b>
+                  One idea.
+                  <br />
+                  Many possibilities.
+                </b>
+                <div class="mini-tags">
+                  <span>Web app</span>
+                  <span>Community</span>
+                </div>
+                <div class="tile-footer">
+                  <div class="avatar-stack">
+                    <i>S</i>
+                    <i>M</i>
+                  </div>
+                  <span>Connect ↗</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="match-toast">
+        <span class="toast-dot">✓</span>
+        <div>
+          <b>A connection is a beginning.</b>
+          <span>Make something great together.</span>
+        </div>
+      </div>
+    </div>
+  )}
+  {variant === 'fittix' && (
+    <div class="terminal-scene">
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <div class="browser-dots">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <span>fittix — client workspace</span>
+          <span>⌘</span>
+        </div>
+        <div class="terminal-content">
+          <span class="terminal-logo">
+            fittix<span>_</span>
+          </span>
+          <p>More coaching. Less clicking.</p>
+          <div class="terminal-rule"></div>
+          <div class="terminal-command">
+            <span>❯</span> find Alex
+          </div>
+          <div class="terminal-result">
+            <span class="terminal-person">AL</span>
+            <div>
+              <b>Alex Lee</b>
+              <span>Client profile · Ready when you are</span>
+            </div>
+            <span class="terminal-status">ACTIVE</span>
+          </div>
+          <div class="terminal-command terminal-prompt">
+            <span>❯</span> <i></i>
+          </div>
+          <div class="terminal-hint">
+            YOUR NEXT ACTION IS JUST A COMMAND AWAY.
+          </div>
+        </div>
+      </div>
+      <div class="keyboard-key">↵</div>
+    </div>
+  )}
+  {variant === 'mcnus' && (
+    <div class="community-scene">
+      <div class="community-window">
+        <div class="community-nav">
+          <b>
+            MC<span>NUS</span>
+          </b>
+          <span>Our story &nbsp; Events &nbsp; Community</span>
+          <i>↗</i>
+        </div>
+        <div class="community-content">
+          <span class="mock-eyebrow">A LITTLE CLOSER TO HOME</span>
+          <h3>
+            Many stories.
+            <br />
+            <em>One community.</em>
+          </h3>
+          <div class="community-shapes">
+            <div class="shape-arch">
+              <span>✳</span>
+            </div>
+            <div class="shape-circle">
+              <span>မင်္ဂလာပါ</span>
+            </div>
+            <div class="shape-square">
+              <span>↗</span>
+            </div>
+          </div>
+          <div class="community-bottom">
+            <span>MYANMAR COMMUNITY AT NUS</span>
+            <span>Connected by belonging. ↗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+  <span class="concept-label">INTERFACE CONCEPT</span>
+</div>

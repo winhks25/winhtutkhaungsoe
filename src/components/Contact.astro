@@ -1,0 +1,75 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/portfolio';
+---
+
+<section id="contact" class="contact-section" aria-labelledby="contact-heading">
+  <div class="container contact-grid">
+    <div>
+      <div class="eyebrow">
+        <span class="status-dot"></span> GOOD THINGS START WITH A CONVERSATION
+      </div>
+      <h2 id="contact-heading">
+        Let’s build
+        <br />
+        something <em>good.</em>
+      </h2>
+    </div>
+    <div class="contact-details">
+      <p>
+        A project idea, a shared curiosity, or just a hello.
+        <br class="desktop-break" /> I’d love to hear from you.
+      </p>
+      <div class="email-row">
+        <a class="email-link" href={`mailto:${profile.email}`}>
+          {profile.email}
+          <Icon name="arrow-up-right" size={25} />
+        </a>
+        <button
+          class="copy-email"
+          data-email={profile.email}
+          type="button"
+          aria-label="Copy email address"
+          hidden
+        >
+          <Icon name="copy" size={19} />
+        </button>
+      </div>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+      <div class="social-links">
+        <a href={profile.github} target="_blank" rel="noopener noreferrer">
+          GitHub <Icon name="arrow-up-right" size={16} />
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+          LinkedIn <Icon name="arrow-up-right" size={16} />
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyButton = document.querySelector<HTMLButtonElement>('.copy-email');
+  const status = document.querySelector<HTMLElement>('.copy-status');
+  if (copyButton && status && navigator.clipboard) {
+    copyButton.hidden = false;
+    let resetTimer: ReturnType<typeof setTimeout>;
+    copyButton.addEventListener('click', async () => {
+      clearTimeout(resetTimer);
+      try {
+        await navigator.clipboard.writeText(copyButton.dataset.email ?? '');
+        status.textContent = 'Email copied. Talk soon!';
+        copyButton.dataset.copied = 'true';
+      } catch {
+        status.textContent =
+          'Couldn’t copy. You can select the email address above.';
+      }
+      resetTimer = setTimeout(() => {
+        status.textContent = '';
+        delete copyButton.dataset.copied;
+      }, 5000);
+    });
+  }
+</script>
