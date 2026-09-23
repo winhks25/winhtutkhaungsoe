@@ -21,6 +21,7 @@ export type ProjectLink = {
 
 /** The concise format shared by project overview pages. */
 export type ProjectDetails = {
+  tagline?: string;
   hero?: ProjectHeroImage;
   links?: ProjectLink[];
   overview: string;

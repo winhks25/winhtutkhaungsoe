@@ -3,6 +3,7 @@ import preview from '../assets/comatch/preview.png';
 
 // Source: the user-supplied CoMatch.md. See docs/COMATCH-CASE-STUDY.md.
 export const comatchDetails = {
+  tagline: 'A convenient teammate matching app for all purposes',
   hero: {
     image: preview,
     alt: 'CoMatch website showing a project recruitment feed with open roles and a sidebar of owned and joined spaces',

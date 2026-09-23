@@ -20,16 +20,17 @@ const { name, content } = Astro.props;
     <a class="text-link case-back" href={`${localPath()}#work`}>
       <Icon name="arrow-left" size={17} /> All projects
     </a>
-    <div class="project-title-row">
-      <h1 id="project-heading">
-        {name}
-        <span>.</span>
-      </h1>
-      {content.links && content.links.length > 0 && (
-        <ProjectLinks links={content.links} />
-      )}
-    </div>
+    <h1 id="project-heading">
+      {name}
+      <span>.</span>
+    </h1>
+    {content.tagline && <p class="case-headline">{content.tagline}</p>}
     {content.hero && <ProjectHero hero={content.hero} />}
+    {content.links && content.links.length > 0 && (
+      <div class="project-actions">
+        <ProjectLinks links={content.links} />
+      </div>
+    )}
     <div class="project-summary">
       <section class="project-overview" aria-labelledby="overview-heading">
         <h2 class="eyebrow" id="overview-heading">
@@ -75,12 +76,8 @@ const { name, content } = Astro.props;
   .project-header {
     padding-bottom: 44px;
   }
-  .project-title-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 24px 32px;
+  .project-actions {
+    margin-top: 24px;
   }
   .project-summary {
     display: grid;
