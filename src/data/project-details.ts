@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+import type { Project } from './portfolio';
 
 /** Plain text with optional emphasis; content is escaped by Astro. */
 export type ProjectParagraph = (
@@ -31,6 +32,9 @@ export type ProjectHeroImage = {
   alt: string;
 };
 
+export type ProjectHeroContent =
+  ProjectHeroImage | { artwork: Project['slug']; alt: string };
+
 export type ProjectLink = {
   label: string;
   href: string;
@@ -40,7 +44,7 @@ export type ProjectLink = {
 /** The concise format shared by project overview pages. */
 export type ProjectDetails = {
   tagline?: string;
-  hero?: ProjectHeroImage;
+  hero?: ProjectHeroContent;
   links?: ProjectLink[];
   overview: ProjectParagraph[];
   role: string;

@@ -3,6 +3,10 @@ import type { ProjectDetails } from './project-details';
 // Source: the user-supplied Fittix.md.
 export const fittixDetails = {
   tagline: 'Fast Client Tracking for Fast-Paced Gym Trainers',
+  hero: {
+    artwork: 'fittix',
+    alt: 'Fittix interface concept showing a terminal-style client workspace with a find Alex command and a client profile result',
+  },
   overview: [
     [
       'A client management and tracking application designed for gym trainers. Trainers often need to manage information across many clients, including body measurements, fitness goals, dietary restrictions, diet and workout plans, payment records, and training schedules.',

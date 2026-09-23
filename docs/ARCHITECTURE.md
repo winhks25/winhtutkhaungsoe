@@ -71,7 +71,7 @@ To move another project to this format, create a `ProjectDetails` object with `o
 
 Fittix uses the same project overview components as CoMatch. `src/data/fittix.ts` preserves the supplied `Fittix.md` tagline, both overview paragraphs, inline CLI example, roles, Java/JavaFX stack, status, contributions, features, and emphasized learnings. The optional `status` array adds a labeled list beside the overview, beneath role and tech stack. Fittix states active development and an October MVP target using the supplied wording.
 
-The homepage summary, role, and stack reflect the updated project information. The previous ideation panel, named team list, proposed-command section, and technical-direction text have been replaced by the supplied content. The concept illustration remains on the homepage; no screenshot or outbound links were supplied for the Fittix detail page.
+The homepage summary, role, and stack reflect the updated project information. The previous ideation panel, named team list, proposed-command section, and technical-direction text have been replaced by the supplied content. Fittix reuses the homepage’s `ProjectArtwork` illustration as its hero through `hero.artwork`, retaining the “Interface concept” label. The shared hero accepts either an imported image or an existing artwork variant with descriptive alt text. No outbound links were supplied for Fittix.
 
 ## Updating projects
 
