@@ -117,11 +117,18 @@ const { variant } = Astro.props;
     border: 1px solid var(--line);
     border-radius: 6px;
     box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+    transform: rotate(-3deg);
+    transition: transform 450ms ease;
+  }
+
+  :global(.art-link:hover) .comatch-preview img,
+  :global(.art-link:focus-visible) .comatch-preview img {
+    transform: rotate(-1deg) translateY(-5px);
   }
 
   .preview-label {
     display: block;
-    margin-top: 16px;
+    margin-top: 24px;
     color: var(--ink);
     font-size: 12px;
     font-weight: 700;
@@ -136,6 +143,17 @@ const { variant } = Astro.props;
 
     .comatch-preview {
       padding: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .comatch-preview img {
+      transition: none;
+    }
+
+    :global(.art-link:hover) .comatch-preview img,
+    :global(.art-link:focus-visible) .comatch-preview img {
+      transform: rotate(-3deg);
     }
   }
 </style>

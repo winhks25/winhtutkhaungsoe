@@ -123,3 +123,9 @@ Astro checking reported zero diagnostics and the production build passed. The co
 Replaced the CoMatch card’s illustrative mockup with the user-supplied screenshot from 23 September 2026 at 11:56:21 AM. The second supplied image served as a reference identifying the homepage card. Kept the screenshot unchanged, with responsive WebP delivery, its full aspect ratio, and the existing themed card surround. Changed the caption to “App screenshot” and allowed the image area to size naturally on mobile. The card still links to the CoMatch case study. Preserved the pre-existing homepage heading edit outside this change.
 
 Verification: Astro checking and the production build passed. Nine targeted browser checks passed with one intentional skip, covering homepage loading, CoMatch navigation, light/dark accessibility, and the responsive width matrix. Reviewed the screenshot card in the browser at mobile and desktop widths. Formatting and whitespace checks passed.
+
+## 12. Restore the CoMatch preview motion
+
+Restored a slight -3-degree tilt on the real CoMatch screenshot. Hovering or keyboard-focusing its project link eases the image to -1 degree and lifts it 5px over 450ms, matching the other project previews. The caption stays level with extra clearance below the rotated image. Reduced-motion mode retains the static tilt without animation or position changes.
+
+Verification: the production build passed. A focused Chromium check confirmed distinct resting and hover transforms, matching keyboard-focus feedback, static reduced-motion behaviour, and image bounds within the card at 390px, 760px, and 1440px. Refreshed the existing browser preview.
