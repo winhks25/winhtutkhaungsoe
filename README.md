@@ -46,9 +46,10 @@ Tests start their own production preview on port **4322** and run in desktop and
 | ------------------------------------------------- | ---------------------------------- |
 | Profile, project descriptions, experience, skills | `src/data/portfolio.ts`            |
 | Homepage layout and introduction                  | `src/pages/index.astro`            |
-| Project routing and existing case-study format    | `src/pages/work/[slug].astro`      |
+| Shared project routing                            | `src/pages/work/[slug].astro`      |
 | Reusable concise project components               | `src/components/projects/`         |
 | Fittix overview, status, and learnings            | `src/data/fittix.ts`               |
+| Community overview, contributions, and learnings  | `src/data/mcnus.ts`                |
 | Concise project content schema                    | `src/data/project-details.ts`      |
 | CoMatch overview, contributions, and learnings    | `src/data/comatch.ts`              |
 | Type, layout, responsive rules                    | `src/styles/global.css`            |
@@ -59,7 +60,7 @@ Tests start their own production preview on port **4322** and run in desktop and
 
 Run `npm run social:generate` after changing the social card’s source. It uses Playwright and local fonts; no external service is needed. Commit the generated `public/social-card.png` as well as the source change.
 
-CoMatch and Myanmar Community at NUS use actual website screenshots in their previews. The CoMatch and Fittix detail pages use the supplied project notes, rendered with shared components for their taglines, overviews, roles, tech stacks, contributions, features, and learnings. Fittix also displays its development status and October MVP target. Fittix’s homepage illustration is labelled **Interface concept**. The supplied résumé is the source for biographical claims and project repository links. Fittix has no repository link because none was supplied.
+CoMatch and Myanmar Community at NUS use actual website screenshots in their previews. All three detail pages use the supplied project notes and shared components for their taglines, heroes, links, overviews, roles, contributions, and learnings. Tech stacks and features appear when supplied. Fittix also displays its development status and October MVP target. Fittix’s homepage illustration is labelled **Interface concept**. The supplied résumé is the source for biographical claims and project repository links. Fittix has no repository link because none was supplied.
 
 ## Publish
 

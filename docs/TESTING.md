@@ -9,10 +9,11 @@
 - Layout: no document overflow in the 25 page/viewport combinations.
 - Content: all six CoMatch sections and every supplied paragraph match `CoMatch.md`, including the text around bold spans. The removed gallery and extended case-study sections are absent.
 - Fittix: every supplied content block matches `Fittix.md`, including its tagline, two overview paragraphs, inline command, status, roles, features, and emphasized learnings. Old ideation copy is absent.
+- Myanmar Community at NUS: all eight supplied copy blocks and both external URLs match the notes. The screenshot hero, buttons below it, contribution bullets, and omitted unsupplied sections were verified.
 - Hero and links: the CoMatch screenshot loads with responsive sources, and all three buttons match the supplied URLs and open in new tabs.
-- Visual review: the concise CoMatch page, hero, and buttons reviewed at desktop and mobile sizes in light and dark mode. Existing project pages retain their layout and pass navigation and accessibility checks.
+- Visual review: the concise CoMatch page, hero, and buttons reviewed at desktop and mobile sizes in light and dark mode. All three project pages now use the shared layout and pass navigation and accessibility checks.
 
-The browser run after the Fittix rewrite completed in 21.3 seconds on the local macOS environment. GitHub Actions execution and public hosting remain unverified until publication.
+The browser run after unifying all three project pages completed in 28.2 seconds on the local macOS environment. GitHub Actions execution and public hosting remain unverified until publication.
 
 ## Reproduce the checks
 

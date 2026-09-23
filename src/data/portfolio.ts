@@ -1,5 +1,7 @@
 import { comatchDetails } from './comatch';
 import { fittixDetails } from './fittix';
+import { mcnusDetails } from './mcnus';
+import { projectText } from './project-details';
 import type { ProjectDetails } from './project-details';
 
 export const profile = {
@@ -24,14 +26,8 @@ export type Project = {
   role: string;
   stack: string[];
   repository?: string;
-} & (
-  | { details: ProjectDetails }
-  | {
-      context: string;
-      contributions: { title: string; description: string }[];
-      focus: string;
-    }
-);
+  details: ProjectDetails;
+};
 
 export const projects: Project[] = [
   {
@@ -66,34 +62,13 @@ export const projects: Project[] = [
     number: '03',
     name: 'Myanmar Community at NUS',
     category: 'FRONTEND & COMMUNITY',
-    headline: 'A digital home for a shared community.',
-    description:
-      'Making a student community website more consistent, responsive, and welcoming on every screen.',
+    headline: mcnusDetails.tagline,
+    description: projectText(mcnusDetails.overview.slice(0, 1)),
     period: 'May 2026 – Present',
-    role: 'Frontend contributor',
+    role: mcnusDetails.role,
     stack: ['Next.js', 'shadcn/ui', 'Git'],
     repository: 'https://github.com/ZweZeya/mcnus',
-    context:
-      'The Myanmar Community at NUS brings students together. As a frontend contributor, I work on the website that supports that community, improving the everyday experience of using its student portal.',
-    contributions: [
-      {
-        title: 'Consistency across the interface',
-        description:
-          'Refactored frontend components to resolve UI and UX inconsistencies across the community portal.',
-      },
-      {
-        title: 'A better fit for smaller screens',
-        description:
-          'Improved mobile responsiveness so that the website’s layouts work more comfortably across devices.',
-      },
-      {
-        title: 'Working together to ship fixes',
-        description:
-          'Collaborated with senior developers to identify and patch high-priority frontend bugs.',
-      },
-    ],
-    focus:
-      'Responsive interfaces, component consistency, and collaborative frontend development.',
+    details: mcnusDetails,
   },
 ];
 
