@@ -1,4 +1,5 @@
 import { comatchDetails } from './comatch';
+import { fittixDetails } from './fittix';
 import type { ProjectDetails } from './project-details';
 
 export const profile = {
@@ -23,14 +24,6 @@ export type Project = {
   role: string;
   stack: string[];
   repository?: string;
-  plan?: {
-    status: string;
-    target: string;
-    team: string[];
-    command: string;
-    commandDescription: string;
-    features: { title: string; description: string }[];
-  };
 } & (
   | { details: ProjectDetails }
   | {
@@ -60,63 +53,13 @@ export const projects: Project[] = [
     number: '02',
     name: 'Fittix',
     category: 'DESKTOP APPLICATION',
-    headline: 'Less admin. More time for people.',
+    headline: fittixDetails.tagline,
     description:
-      'A CLI-first client tracking app for gym trainers, currently in ideation. Planned to bring client records, training plans, and progress into one visual workspace.',
+      'A CLI-first client management and tracking app for gym trainers, in active development. Brings client information, workout tracking, progress visualization, and scheduling into one place.',
     period: 'Aug 2026 – Present',
-    role: 'Developer & project manager',
-    stack: ['Java', 'JavaFX', 'Git'],
-    plan: {
-      status: 'In progress · Ideation phase',
-      target: 'October 2026',
-      team: ['Win Htut Khaung Soe', 'Khoa', 'Hein', 'Fiko', 'Kaiwen'],
-      command: 'add n/Josh g/to lose 10kg',
-      commandDescription:
-        'The proposed command adds Josh as a client and records his goal of losing 10 kg. A graphical interface would present the recorded information for trainers to review.',
-      features: [
-        {
-          title: 'Client information in one place',
-          description:
-            'Keep client details, body measurements, goals, and dietary restrictions together so trainers can refer to them when planning sessions.',
-        },
-        {
-          title: 'Diet and exercise plans',
-          description:
-            'Record each client’s diet and workout plans alongside their profile, keeping the guidance and the person it belongs to connected.',
-        },
-        {
-          title: 'Sessions and fee records',
-          description:
-            'Track workout session dates and times, together with fee-payment records, to keep day-to-day client administration organized.',
-        },
-        {
-          title: 'Progress, with context',
-          description:
-            'Use graphs or diagrams to review progress alongside diet and workout information, helping trainers spot patterns and discuss changes with their clients.',
-        },
-      ],
-    },
-    context:
-      'Gym trainers juggle more than exercise sessions: client body information, dietary restrictions, diet and workout plans, fee payments, and session schedules. Fittix aims to bring these records into one place, combining quick, command-driven input with a graphical view of the information.',
-    contributions: [
-      {
-        title: 'Define the problem and scope',
-        description:
-          'I work as both a developer and project manager. During ideation, I organize meetings, decide on user stories and the problems we should solve, and define the scope of the project.',
-      },
-      {
-        title: 'Coordinate the five-person team',
-        description:
-          'I delegate work across the team and track each member’s progress, keeping responsibilities clear as we move through the project phases.',
-      },
-      {
-        title: 'Keep deliverables on track',
-        description:
-          'I coordinate each phase’s deliverables and follow up on progress to keep the team working toward the planned MVP release in October.',
-      },
-    ],
-    focus:
-      'The planned technical direction combines Java and JavaFX: fast CLI-first input with a graphical view of client records and progress. The project is currently in ideation; the features above describe the intended scope, with the MVP targeted for October 2026.',
+    role: fittixDetails.role,
+    stack: fittixDetails.stack,
+    details: fittixDetails,
   },
   {
     slug: 'mcnus',

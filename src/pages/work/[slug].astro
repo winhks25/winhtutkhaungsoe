@@ -8,7 +8,6 @@ import { projects, type Project } from '../../data/portfolio';
 import { localPath } from '../../utils/paths';
 import ProjectDetails from '../../components/projects/ProjectDetails.astro';
 import { projectText } from '../../data/project-details';
-import '../../styles/case-study.css';
 export const getStaticPaths = (() =>
   projects.map((project, index) => ({
     params: { slug: project.slug },
@@ -55,9 +54,7 @@ const { project, next } = Astro.props;
             <span>{project.period}</span>
           </div>
           <div>
-            <span class="eyebrow">
-              {project.plan ? 'PLANNED STACK' : 'BUILT WITH'}
-            </span>
+            <span class="eyebrow">BUILT WITH</span>
             <span>{project.stack.join(' · ')}</span>
           </div>
           {project.repository && (
@@ -72,31 +69,6 @@ const { project, next } = Astro.props;
             </a>
           )}
         </div>
-        {project.plan && (
-          <aside
-            class="project-plan-summary"
-            aria-label="Project status and team"
-          >
-            <div>
-              <span class="eyebrow">CURRENT STATUS</span>
-              <p>{project.plan.status}</p>
-            </div>
-            <div>
-              <span class="eyebrow">MVP TARGET</span>
-              <p>{project.plan.target}</p>
-            </div>
-            <div class="project-plan-team">
-              <span class="eyebrow">
-                THE TEAM · {project.plan.team.length} MEMBERS
-              </span>
-              <ul>
-                {project.plan.team.map((member) => (
-                  <li>{member}</li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        )}
         <div class="case-art">
           <ProjectArtwork variant={project.slug} />
         </div>
@@ -111,37 +83,6 @@ const { project, next } = Astro.props;
             <p>{project.context}</p>
           </div>
         </div>
-        {project.plan && (
-          <section
-            class="case-section"
-            aria-labelledby="planned-features-heading"
-          >
-            <div class="eyebrow">PLANNED EXPERIENCE</div>
-            <div>
-              <h2 id="planned-features-heading">
-                Quick to record. Clear to review.
-              </h2>
-              <p>
-                The proposed workflow pairs CLI-first commands for fast entry
-                with a GUI for browsing recorded client data. These features are
-                being scoped during ideation.
-              </p>
-              <figure class="project-command">
-                <figcaption class="eyebrow">PROPOSED COMMAND</figcaption>
-                <code>{project.plan.command}</code>
-                <p>{project.plan.commandDescription}</p>
-              </figure>
-              <div class="project-plan-features">
-                {project.plan.features.map((feature) => (
-                  <article>
-                    <h3>{feature.title}</h3>
-                    <p>{feature.description}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
         <div class="case-section">
           <div class="eyebrow">MY CONTRIBUTIONS</div>
           <div class="contributions">
@@ -157,9 +98,7 @@ const { project, next } = Astro.props;
           </div>
         </div>
         <div class="case-section case-focus">
-          <div class="eyebrow">
-            {project.plan ? 'TECHNICAL DIRECTION' : 'TECHNICAL FOCUS'}
-          </div>
+          <div class="eyebrow">TECHNICAL FOCUS</div>
           <p>{project.focus}</p>
         </div>
       </section>
