@@ -48,9 +48,10 @@ export type ProjectDetails = {
   links?: ProjectLink[];
   overview: ProjectParagraph[];
   role: string;
-  stack: string[];
+  stack?: string[];
   status?: string[];
   contributions: ProjectParagraph[];
-  features: ProjectFeature[];
+  contributionsFormat?: 'paragraphs' | 'list';
+  features?: ProjectFeature[];
   learnings: ProjectParagraph[];
 };

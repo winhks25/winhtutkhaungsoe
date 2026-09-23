@@ -4,15 +4,24 @@ import type { ProjectParagraph } from '../../data/project-details';
 interface Props {
   paragraphs: ProjectParagraph[];
   variant?: 'body' | 'lead';
+  format?: 'paragraphs' | 'list';
 }
-const { paragraphs, variant = 'body' } = Astro.props;
+const { paragraphs, variant = 'body', format = 'paragraphs' } = Astro.props;
+const Container = format === 'list' ? 'ul' : 'div';
+const Item = format === 'list' ? 'li' : 'p';
 ---
 
-<div
-  class:list={['project-prose', { 'project-prose-lead': variant === 'lead' }]}
+<Container
+  class:list={[
+    'project-prose',
+    {
+      'project-prose-lead': variant === 'lead',
+      'project-prose-list': format === 'list',
+    },
+  ]}
 >
   {paragraphs.map((paragraph) => (
-    <p>
+    <Item>
       {paragraph.map((part) =>
         typeof part === 'string' ? (
           part
@@ -22,9 +31,9 @@ const { paragraphs, variant = 'body' } = Astro.props;
           <code>{part.code}</code>
         ),
       )}
-    </p>
+    </Item>
   ))}
-</div>
+</Container>
 
 <style>
   .project-prose {
@@ -36,6 +45,14 @@ const { paragraphs, variant = 'body' } = Astro.props;
   }
   strong {
     color: var(--ink);
+  }
+  .project-prose-list {
+    margin: 0;
+    padding-left: 22px;
+    list-style: disc;
+  }
+  .project-prose-list > li::marker {
+    color: var(--accent);
   }
   code {
     font-family: var(--mono);

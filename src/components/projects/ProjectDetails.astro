@@ -45,16 +45,18 @@ const { name, content } = Astro.props;
           </h2>
           <p>{content.role}</p>
         </section>
-        <section aria-labelledby="stack-heading">
-          <h2 class="eyebrow" id="stack-heading">
-            Tech Stack
-          </h2>
-          <ul class="project-stack" role="list">
-            {content.stack.map((technology) => (
-              <li>{technology}</li>
-            ))}
-          </ul>
-        </section>
+        {content.stack && content.stack.length > 0 && (
+          <section aria-labelledby="stack-heading">
+            <h2 class="eyebrow" id="stack-heading">
+              Tech Stack
+            </h2>
+            <ul class="project-stack" role="list">
+              {content.stack.map((technology) => (
+                <li>{technology}</li>
+              ))}
+            </ul>
+          </section>
+        )}
         {content.status && content.status.length > 0 && (
           <section aria-labelledby="status-heading">
             <h2 class="eyebrow" id="status-heading">
@@ -71,11 +73,16 @@ const { name, content } = Astro.props;
     </div>
   </header>
   <ProjectSection id="contributions-heading" title="My Contributions">
-    <ProjectParagraphs paragraphs={content.contributions} />
+    <ProjectParagraphs
+      paragraphs={content.contributions}
+      format={content.contributionsFormat}
+    />
   </ProjectSection>
-  <ProjectSection id="features-heading" title="Key Features">
-    <ProjectFeatures features={content.features} />
-  </ProjectSection>
+  {content.features && content.features.length > 0 && (
+    <ProjectSection id="features-heading" title="Key Features">
+      <ProjectFeatures features={content.features} />
+    </ProjectSection>
+  )}
   <ProjectSection id="learnings-heading" title="What I Learned">
     <ProjectParagraphs paragraphs={content.learnings} />
   </ProjectSection>
