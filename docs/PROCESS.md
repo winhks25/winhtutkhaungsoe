@@ -99,3 +99,11 @@ Replaced the geometric hero illustration with the user's supplied waterfront pho
 Added a rounded sage frame and readable name/role caption using the existing light/dark colour tokens. Desktop uses a portrait frame beside the introduction; mobile uses a smaller square frame below the introduction and actions. Removed the obsolete illustration component and its CSS. Documented how to replace the photo and adjust its crop in the architecture guide.
 
 Astro checking reported zero errors, warnings, or hints, and the production build generated all five pages and optimized images. The existing browser suite passed **52 tests with two intentional skips**, including light/dark accessibility scans and the responsive overflow matrix. Visually reviewed light and dark desktop screenshots and the dark mobile layout, and verified that the browser loaded the generated WebP successfully. Opened the updated local preview for the user.
+
+## 9. Borderless paper-cut portrait
+
+The user preferred a backgroundless portrait with paper outlines. Replaced the framed photograph with a transparent, AI-edited cutout and an irregular ivory paper edge that follows the silhouette. Removed the sage panel, rounded rectangular border, and caption. Kept the full silhouette visible on desktop and mobile, with a subtle shadow and no photo crop. The original photo remains available as a source reference.
+
+Used the built-in image-generation tool for the edit and verified actual PNG alpha transparency. The tool initially rejected the source JPEG; an orientation-correct PNG encoding was accepted. Recorded the tool, asset paths, and final prompt in `docs/PORTRAIT-ASSET.md`. Astro's optimized WebP outputs retain transparency.
+
+Astro checking and the production build passed. The targeted homepage loading, light/dark accessibility, and responsive overflow checks passed (seven passing tests, one intentional skip). Reviewed screenshots of the light/dark desktop hero and dark mobile layout. The transparent cutout blends directly into both page backgrounds.
