@@ -91,3 +91,11 @@ Moved page colours to semantic tokens in `src/styles/themes.css`. Dark mode uses
 Added tests for initial system preference, live system changes, manual override, keyboard toggling, navigation/reload persistence, appearance before body parsing, blocked storage, cross-tab synchronisation, and dark-mode accessibility on all five pages. The first complete run passed 51 checks and caught one overlapping illustration caption on mobile; gave captions an opaque themed background and moved them away from the floating mockup cards.
 
 The final build and Astro/TypeScript check passed with zero diagnostics. The complete suite finished with **52 passing tests**, **two intentional skips**, and **zero accessibility violations across 18 light/dark page scans**. The viewport matrix still passed at 320, 390, 768, 1024, and 1440 pixels. Reviewed light/dark desktop screenshots and the dark mobile page, then refreshed the user's existing in-app preview. Updated the README, architecture guide, and verification notes. Recorded the revision as separate typography and dark-mode commits.
+
+## 8. Personal portrait in the hero
+
+Replaced the geometric hero illustration with the user's supplied waterfront photo. Kept the original photo as a source asset and used Astro's built-in image pipeline to generate five responsive WebP sizes (approximately 38–240 KB, compared with the 3.9 MB source). The portrait loads eagerly with high priority and explicit dimensions, and its generated URLs respect the repository base path.
+
+Added a rounded sage frame and readable name/role caption using the existing light/dark colour tokens. Desktop uses a portrait frame beside the introduction; mobile uses a smaller square frame below the introduction and actions. Removed the obsolete illustration component and its CSS. Documented how to replace the photo and adjust its crop in the architecture guide.
+
+Astro checking reported zero errors, warnings, or hints, and the production build generated all five pages and optimized images. The existing browser suite passed **52 tests with two intentional skips**, including light/dark accessibility scans and the responsive overflow matrix. Visually reviewed light and dark desktop screenshots and the dark mobile layout, and verified that the browser loaded the generated WebP successfully. Opened the updated local preview for the user.

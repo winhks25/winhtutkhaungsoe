@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-import HeroArtwork from '../components/HeroArtwork.astro';
+import HeroPortrait from '../components/HeroPortrait.astro';
 import ProjectArtwork from '../components/ProjectArtwork.astro';
 import Contact from '../components/Contact.astro';
 import { profile, projects, experience, skills } from '../data/portfolio';
@@ -40,7 +40,7 @@ const [featured, ...otherProjects] = projects;
         <span>Currently learning. Always building.</span>
       </div>
     </div>
-    <HeroArtwork />
+    <HeroPortrait />
   </section>
 
   <div class="intro-strip container">

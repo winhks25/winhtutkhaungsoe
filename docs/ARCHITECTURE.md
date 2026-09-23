@@ -15,6 +15,7 @@ The homepage’s introduction and about copy are in `src/pages/index.astro`. Con
 public/                      Résumé, favicon, social card, robots.txt
 scripts/                     Reproducible social-card generator
 src/
+  assets/win-portrait.jpg    Original hero photo, optimized during the build
   components/                Header, footer, contact, icons, and artwork
   data/portfolio.ts          Typed résumé-based content
   layouts/BaseLayout.astro   Shared document and metadata
@@ -32,6 +33,8 @@ tests/portfolio.spec.ts     Browser and accessibility checks
 `themes.css` defines semantic colours for paper, ink, muted text, borders, surfaces, actions, and artwork surrounds. It provides light and dark values, including a CSS-only fallback for the system preference. `global.css` consumes those tokens instead of fixing content to a single palette.
 
 Typography uses locally hosted Farro Medium (500) for body copy and Bold (700) for headings and primary controls. Body copy is 17–18px, navigation is 16px, tags and dates are at least 14px, and section labels are 12px. The former serif accents have been removed. Both font weights are real font files, not synthetic bold. The design works without remote fonts or image providers.
+
+`HeroPortrait.astro` displays the supplied waterfront photograph inside a rounded sage frame. Its scoped styles control the frame, caption, and mobile crop; the existing theme tokens adapt it to light and dark mode. Replace `src/assets/win-portrait.jpg` to change the photo, then review the alt text and crop in this component. Astro's `Image` component generates responsive WebP assets at build time, with explicit dimensions and eager, high-priority loading for the hero. Generated asset URLs automatically include the GitHub Pages base path. The desktop frame uses a 4:5 ratio; below 760px, it becomes a compact square below the introduction. The portrait is hidden in print.
 
 HTML/CSS/SVG illustrations are decorative, with no focusable elements. Their small interface text is illustrative; actual project descriptions remain available as ordinary readable text outside the artwork. Each illustration carries a visible concept label.
 
