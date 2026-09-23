@@ -33,28 +33,28 @@ export const projects: Project[] = [
     category: 'FULL-STACK DEVELOPMENT',
     headline: 'Great ideas deserve great teammates.',
     description:
-      'A teammate-matching platform that helps people find collaborators and turn a shared idea into a conversation.',
+      'Find teammates for hackathons, academic projects, and independent ideas through shared Spaces, role-based recruitment, and real-time chat.',
     period: 'May 2026 – Present',
     role: 'Full-stack developer',
-    stack: ['React', 'Next.js', 'Supabase'],
+    stack: ['Next.js', 'React', 'Supabase', 'PostgreSQL'],
     repository: 'https://github.com/naymin-gif/CoMatch',
     context:
-      'Finding a collaborator is only the first step. CoMatch brings project posts, professional profiles, and one-to-one conversations into a single platform, helping people connect around the things they want to build.',
+      'Finding teammates often means searching through scattered group chats and spreadsheets. Recruitment posts get buried, availability becomes unclear, and applicants struggle to track responses. CoMatch gives discovery, recruitment, and communication a shared structure.',
     contributions: [
       {
         title: 'Conversations, in real time',
         description:
-          'Engineered a one-to-one messaging system using Supabase WebSockets, enabling users to communicate after discovering each other through project posts and professional profiles.',
+          'I built the one-to-one messaging system with Supabase Realtime, connecting teammate discovery to direct conversations. The workspace brings message history, live updates, and conversation navigation into the same interface.',
       },
       {
         title: 'A secure way in',
         description:
-          'Integrated Google and LinkedIn OAuth through Supabase Auth, with protected routing for sensitive dashboard data.',
+          'I integrated Google and LinkedIn OAuth through Supabase Auth and protected routing for the dashboard. This work connected provider callbacks, authenticated sessions, and access to personal application data.',
       },
       {
         title: 'Confidence in the core flows',
         description:
-          'Validated critical user journeys with unit tests in Vitest, integration testing, and end-to-end tests in Playwright.',
+          'I contributed testing across the stack using Vitest, database integration checks, and Playwright. The documented coverage includes reusable UI behaviour, database queries, and unauthenticated access to protected pages.',
       },
     ],
     focus:

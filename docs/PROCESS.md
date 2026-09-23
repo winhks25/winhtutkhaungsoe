@@ -107,3 +107,13 @@ The user preferred a backgroundless portrait with paper outlines. Replaced the f
 Used the built-in image-generation tool for the edit and verified actual PNG alpha transparency. The tool initially rejected the source JPEG; an orientation-correct PNG encoding was accepted. Recorded the tool, asset paths, and final prompt in `docs/PORTRAIT-ASSET.md`. Astro's optimized WebP outputs retain transparency.
 
 Astro checking and the production build passed. The targeted homepage loading, light/dark accessibility, and responsive overflow checks passed (seven passing tests, one intentional skip). Reviewed screenshots of the light/dark desktop hero and dark mobile layout. The transparent cutout blends directly into both page backgrounds.
+
+## 10. CoMatch project case study
+
+Expanded CoMatch using the supplied 40-page project documentation. Added a specific introduction and problem statement, team credit, a sign-in-required demo link, a three-step product walkthrough, clearer personal contributions, three engineering decisions with tradeoffs, an architecture summary, testing coverage, and reflection/next steps. Personal ownership remains limited to the work already attributed in the résumé; broader implementation decisions are described as team work.
+
+Extracted four genuine screenshots from the PDF without alteration, replacing the conceptual artwork on the detailed CoMatch page. Each is labelled as a development screenshot with sample data. Screenshots use responsive WebP display assets, with full-resolution gallery links, descriptive alt text, and native lazy loading. The portfolio homepage retains its labelled interface concept. The live demo was checked through its sign-in page; no authenticated product actions were performed.
+
+Added `src/data/comatch.ts` and `src/styles/case-study.css`, and extended the shared project template conditionally so Fittix and Myanmar Community retain their original layouts. Documented sources, asset provenance, claim boundaries, and editing instructions in `docs/COMATCH-CASE-STUDY.md` and the architecture guide.
+
+Astro checking reported zero diagnostics and the production build passed. The complete browser suite passed 52 tests with two intentional skips, including 18 light/dark accessibility scans and the responsive width matrix. Verified all four displayed screenshots decode successfully, their built asset references respect the GitHub Pages base path, and the case-study section links navigate correctly. Visually reviewed the desktop dark page and mobile light layout. The local preview runs on port 4323. Preserved the user's pre-existing `index.astro` heading edit outside the commit.

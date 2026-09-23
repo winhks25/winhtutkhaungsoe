@@ -57,6 +57,10 @@ Use `localPath()` for every internal page and public asset. It reads `import.met
 
 The layout derives canonical and Open Graph URLs from `Astro.site` and the requested path. The sitemap integration discovers the generated pages. `robots.txt` contains the deployment-specific sitemap address and must be updated if the hostname or repository changes.
 
+## Extended CoMatch case study
+
+`src/data/comatch.ts` holds the CoMatch product walkthrough, screenshots, team credit, demo URL, engineering decisions, and testing descriptions. The shared project template renders these additional sections only for CoMatch. `src/styles/case-study.css` supplies the extended layout using the existing colour tokens. Screenshots in `src/assets/comatch/` are original embedded images from the supplied documentation; Astro generates responsive WebP versions and the gallery links to the full-size originals. See `docs/COMATCH-CASE-STUDY.md` for source pages, attribution boundaries, and maintenance notes.
+
 ## Updating projects
 
 1. Update the matching record in `portfolio.ts`; keep dates and accomplishments factual.

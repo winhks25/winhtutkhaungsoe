@@ -1,11 +1,14 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectArtwork from '../../components/ProjectArtwork.astro';
 import Icon from '../../components/Icon.astro';
 import Contact from '../../components/Contact.astro';
 import { projects, type Project } from '../../data/portfolio';
 import { localPath } from '../../utils/paths';
+import { comatchStudy } from '../../data/comatch';
+import '../../styles/case-study.css';
 export const getStaticPaths = (() =>
   projects.map((project, index) => ({
     params: { slug: project.slug },
@@ -16,6 +19,7 @@ interface Props {
   next: Project;
 }
 const { project, next } = Astro.props;
+const study = project.slug === 'comatch' ? comatchStudy : undefined;
 ---
 
 <BaseLayout
@@ -34,6 +38,7 @@ const { project, next } = Astro.props;
       <span>.</span>
     </h1>
     <p class="case-headline">{project.headline}</p>
+    {study && <p class="study-introduction">{study.introduction}</p>}
     <div class="case-meta">
       <div>
         <span class="eyebrow">MY ROLE</span>
@@ -59,9 +64,53 @@ const { project, next } = Astro.props;
         </a>
       )}
     </div>
-    <div class="case-art">
-      <ProjectArtwork variant={project.slug} />
-    </div>
+    {study ? (
+      <>
+        <div class="study-team">
+          <div>
+            <span class="eyebrow">TWO-PERSON TEAM</span>
+            <p>{study.team}</p>
+          </div>
+          <a
+            class="button button-primary"
+            href={study.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open live demo <Icon name="arrow-up-right" size={18} />
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <span class="study-demo-note">Sign-in required</span>
+        </div>
+        <figure class="study-cover">
+          <Image
+            src={study.cover.image}
+            alt={study.cover.alt}
+            widths={[640, 960, 1280, 1703]}
+            sizes="(max-width: 760px) 100vw, 1200px"
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <figcaption>
+            <span>{study.cover.caption}</span>
+            <span>Development screenshot · sample data</span>
+          </figcaption>
+        </figure>
+        <nav class="study-nav" aria-label="CoMatch case study">
+          <a href="#context-heading">The problem</a>
+          <a href="#journey-heading">The product</a>
+          <a href="#contributions-heading">My work</a>
+          <a href="#decisions-heading">Decisions</a>
+          <a href="#testing-heading">Testing</a>
+          <a href="#reflection-heading">Reflection</a>
+        </nav>
+      </>
+    ) : (
+      <div class="case-art">
+        <ProjectArtwork variant={project.slug} />
+      </div>
+    )}
   </section>
   <section class="case-body container" aria-labelledby="context-heading">
     <div class="case-section">
@@ -71,11 +120,64 @@ const { project, next } = Astro.props;
           Built around <em>people.</em>
         </h2>
         <p>{project.context}</p>
+        {study && <p class="study-solution">{study.solution}</p>}
       </div>
     </div>
+    {study && (
+      <section class="study-journey" aria-labelledby="journey-heading">
+        <div class="eyebrow">THE PRODUCT</div>
+        <h2 id="journey-heading">From discovery to a conversation.</h2>
+        <p class="study-lead">
+          A walkthrough of the documented development build. Open a screenshot
+          to see the interface at full size.
+        </p>
+        <ol class="journey-list">
+          {study.journey.map((step, index) => (
+            <li>
+              <div class="journey-copy">
+                <span class="eyebrow">0{index + 1} / THE JOURNEY</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+              <figure class="journey-screen">
+                <a
+                  href={step.image.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open full-size screenshot: ${step.title} (opens in a new tab)`}
+                >
+                  <Image
+                    src={step.image}
+                    alt={step.alt}
+                    widths={[480, 800, 1280]}
+                    sizes="(max-width: 760px) 100vw, 720px"
+                    format="webp"
+                    loading="lazy"
+                  />
+                </a>
+                <figcaption>
+                  Development screenshot · sample data{' '}
+                  <Icon name="arrow-up-right" size={16} />
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
     <div class="case-section">
       <div class="eyebrow">MY CONTRIBUTIONS</div>
       <div class="contributions">
+        {study && (
+          <div>
+            <h2 id="contributions-heading">Where I contributed.</h2>
+            <p>
+              My focus was authentication, real-time messaging, and testing.
+              CoMatch is a team project; the product-wide decisions below
+              describe our shared implementation.
+            </p>
+          </div>
+        )}
         {project.contributions.map((item, index) => (
           <article>
             <span class="contribution-number">0{index + 1}</span>
@@ -87,10 +189,92 @@ const { project, next } = Astro.props;
         ))}
       </div>
     </div>
-    <div class="case-section case-focus">
-      <div class="eyebrow">TECHNICAL FOCUS</div>
-      <p>{project.focus}</p>
-    </div>
+    {study ? (
+      <>
+        <section class="case-section" aria-labelledby="decisions-heading">
+          <div class="eyebrow">ENGINEERING DECISIONS</div>
+          <div>
+            <h2 id="decisions-heading">The choices behind the interface.</h2>
+            <div class="study-decisions">
+              {study.decisions.map((item) => (
+                <article>
+                  <h3>{item.title}</h3>
+                  <p>{item.problem}</p>
+                  <p>
+                    <strong>Our approach.</strong> {item.decision}
+                  </p>
+                  <p>
+                    <strong>The tradeoff.</strong> {item.tradeoff}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <aside class="study-architecture" aria-label="CoMatch architecture">
+              <h3>How the pieces connect</h3>
+              <p>
+                Next.js and React provide the interface and application routes.
+                Supabase supplies authentication, PostgreSQL data, media
+                storage, and Realtime messaging. Vercel hosts the application.
+              </p>
+            </aside>
+          </div>
+        </section>
+        <section class="case-section" aria-labelledby="testing-heading">
+          <div class="eyebrow">TESTING & EVIDENCE</div>
+          <div>
+            <h2 id="testing-heading">Confidence at each layer.</h2>
+            <div class="study-tests">
+              {study.testing.map((item) => (
+                <article>
+                  <h3>{item.title}</h3>
+                  <span class="study-tools">{item.tools}</span>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+            <p class="study-test-note">
+              These checks describe the coverage recorded in the project
+              documentation. A complete signed-in recruitment-to-chat journey
+              remains a useful next step for stronger end-to-end evidence.
+            </p>
+          </div>
+        </section>
+        <section
+          class="case-section case-focus"
+          aria-labelledby="reflection-heading"
+        >
+          <div class="eyebrow">STATUS & REFLECTION</div>
+          <div>
+            <h2 id="reflection-heading">A connected foundation.</h2>
+            <p>
+              The documented build connects profiles, Spaces, recruitment posts,
+              application management, and private chat. The live demo provides a
+              sign-in entry point; development is ongoing.
+            </p>
+            <p class="study-solution">
+              The central lesson is that the transitions matter: a profile
+              should lead naturally into a conversation, and a recruitment
+              decision should be easy for both people to find. Shared state and
+              clear feedback make those transitions work.
+            </p>
+            <div class="study-next">
+              <h3>What I would improve next</h3>
+              <p>
+                Exercise the full application-and-chat workflow with two
+                signed-in users, including concurrent conversation creation and
+                notification updates across tabs. Then use student feedback to
+                understand where finding a teammate still feels difficult.
+              </p>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <div class="case-section case-focus">
+        <div class="eyebrow">TECHNICAL FOCUS</div>
+        <p>{project.focus}</p>
+      </div>
+    )}
   </section>
   <div class="container next-project">
     <span class="eyebrow">NEXT PROJECT</span>
