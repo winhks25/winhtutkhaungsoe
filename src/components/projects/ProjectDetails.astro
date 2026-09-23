@@ -5,6 +5,8 @@ import Icon from '../Icon.astro';
 import ProjectSection from './ProjectSection.astro';
 import ProjectParagraphs from './ProjectParagraphs.astro';
 import ProjectFeatures from './ProjectFeatures.astro';
+import ProjectHero from './ProjectHero.astro';
+import ProjectLinks from './ProjectLinks.astro';
 
 interface Props {
   name: string;
@@ -18,10 +20,16 @@ const { name, content } = Astro.props;
     <a class="text-link case-back" href={`${localPath()}#work`}>
       <Icon name="arrow-left" size={17} /> All projects
     </a>
-    <h1 id="project-heading">
-      {name}
-      <span>.</span>
-    </h1>
+    <div class="project-title-row">
+      <h1 id="project-heading">
+        {name}
+        <span>.</span>
+      </h1>
+      {content.links && content.links.length > 0 && (
+        <ProjectLinks links={content.links} />
+      )}
+    </div>
+    {content.hero && <ProjectHero hero={content.hero} />}
     <div class="project-summary">
       <section class="project-overview" aria-labelledby="overview-heading">
         <h2 class="eyebrow" id="overview-heading">
@@ -66,6 +74,13 @@ const { name, content } = Astro.props;
   }
   .project-header {
     padding-bottom: 44px;
+  }
+  .project-title-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 32px;
   }
   .project-summary {
     display: grid;

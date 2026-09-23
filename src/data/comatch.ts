@@ -1,7 +1,27 @@
 import type { ProjectDetails } from './project-details';
+import preview from '../assets/comatch/preview.png';
 
 // Source: the user-supplied CoMatch.md. See docs/COMATCH-CASE-STUDY.md.
 export const comatchDetails = {
+  hero: {
+    image: preview,
+    alt: 'CoMatch website showing a project recruitment feed with open roles and a sidebar of owned and joined spaces',
+  },
+  links: [
+    {
+      label: 'Live website',
+      href: 'https://co-match-two.vercel.app/',
+      primary: true,
+    },
+    {
+      label: 'GitHub repo',
+      href: 'https://github.com/naymin-gif/CoMatch',
+    },
+    {
+      label: 'Documentation',
+      href: 'https://drive.google.com/file/d/1wgBVu-Bw6yaJ8lQwJnzSLLG81Xzvedm5/view?usp=sharing',
+    },
+  ],
   overview:
     'CoMatch is a web platform designed to help students and young adults find compatible teammates for academic projects, hackathons, competitions, and independent projects. Users can create project spaces, publish recruitment posts, apply for specific roles, manage applications, and communicate with potential teammates through real-time messaging.',
   role: 'Full-stack developer',

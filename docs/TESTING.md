@@ -8,9 +8,10 @@
 - Axe: zero violations across 18 desktop/mobile scans: the homepage and three project pages in light mode, plus all five pages in dark mode.
 - Layout: no document overflow in the 25 page/viewport combinations.
 - Content: all six CoMatch sections and every supplied paragraph match `CoMatch.md`, including the text around bold spans. The removed gallery and extended case-study sections are absent.
-- Visual review: the concise CoMatch page reviewed at desktop and mobile sizes in light and dark mode. Existing project pages retain their layout and pass navigation and accessibility checks.
+- Hero and links: the CoMatch screenshot loads with responsive sources, and all three buttons match the supplied URLs and open in new tabs.
+- Visual review: the concise CoMatch page, hero, and buttons reviewed at desktop and mobile sizes in light and dark mode. Existing project pages retain their layout and pass navigation and accessibility checks.
 
-The browser run after the concise CoMatch revision completed in 20.1 seconds on the local macOS environment. GitHub Actions execution and public hosting remain unverified until publication.
+The browser run after the CoMatch hero and links revision completed in 20.8 seconds on the local macOS environment. GitHub Actions execution and public hosting remain unverified until publication.
 
 ## Reproduce the checks
 
