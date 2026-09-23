@@ -61,6 +61,10 @@ The layout derives canonical and Open Graph URLs from `Astro.site` and the reque
 
 `src/data/comatch.ts` holds the CoMatch product walkthrough, screenshots, team credit, demo URL, engineering decisions, and testing descriptions. The shared project template renders these additional sections only for CoMatch. `src/styles/case-study.css` supplies the extended layout using the existing colour tokens. Screenshots in `src/assets/comatch/` are original embedded images from the supplied documentation; Astro generates responsive WebP versions and the gallery links to the full-size originals. See `docs/COMATCH-CASE-STUDY.md` for source pages, attribution boundaries, and maintenance notes.
 
+## Projects in ideation
+
+The optional `plan` field in a `Project` record adds a status/team panel, a proposed CLI command, and planned capabilities. Fittix uses this field to distinguish its ideation phase and October 2026 MVP target from delivered functionality. Edit its team, target, feature descriptions, and command in `src/data/portfolio.ts`; the template changes “Built with” to “Planned stack” automatically. Review these labels as implementation progresses.
+
 ## Updating projects
 
 1. Update the matching record in `portfolio.ts`; keep dates and accomplishments factual.

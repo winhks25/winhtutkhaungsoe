@@ -49,7 +49,9 @@ const study = project.slug === 'comatch' ? comatchStudy : undefined;
         <span>{project.period}</span>
       </div>
       <div>
-        <span class="eyebrow">BUILT WITH</span>
+        <span class="eyebrow">
+          {project.plan ? 'PLANNED STACK' : 'BUILT WITH'}
+        </span>
         <span>{project.stack.join(' · ')}</span>
       </div>
       {project.repository && (
@@ -64,6 +66,28 @@ const study = project.slug === 'comatch' ? comatchStudy : undefined;
         </a>
       )}
     </div>
+    {project.plan && (
+      <aside class="project-plan-summary" aria-label="Project status and team">
+        <div>
+          <span class="eyebrow">CURRENT STATUS</span>
+          <p>{project.plan.status}</p>
+        </div>
+        <div>
+          <span class="eyebrow">MVP TARGET</span>
+          <p>{project.plan.target}</p>
+        </div>
+        <div class="project-plan-team">
+          <span class="eyebrow">
+            THE TEAM · {project.plan.team.length} MEMBERS
+          </span>
+          <ul>
+            {project.plan.team.map((member) => (
+              <li>{member}</li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    )}
     {study ? (
       <>
         <div class="study-team">
@@ -123,6 +147,34 @@ const study = project.slug === 'comatch' ? comatchStudy : undefined;
         {study && <p class="study-solution">{study.solution}</p>}
       </div>
     </div>
+    {project.plan && (
+      <section class="case-section" aria-labelledby="planned-features-heading">
+        <div class="eyebrow">PLANNED EXPERIENCE</div>
+        <div>
+          <h2 id="planned-features-heading">
+            Quick to record. Clear to review.
+          </h2>
+          <p>
+            The proposed workflow pairs CLI-first commands for fast entry with a
+            GUI for browsing recorded client data. These features are being
+            scoped during ideation.
+          </p>
+          <figure class="project-command">
+            <figcaption class="eyebrow">PROPOSED COMMAND</figcaption>
+            <code>{project.plan.command}</code>
+            <p>{project.plan.commandDescription}</p>
+          </figure>
+          <div class="study-decisions">
+            {project.plan.features.map((feature) => (
+              <article>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
     {study && (
       <section class="study-journey" aria-labelledby="journey-heading">
         <div class="eyebrow">THE PRODUCT</div>
@@ -271,7 +323,9 @@ const study = project.slug === 'comatch' ? comatchStudy : undefined;
       </>
     ) : (
       <div class="case-section case-focus">
-        <div class="eyebrow">TECHNICAL FOCUS</div>
+        <div class="eyebrow">
+          {project.plan ? 'TECHNICAL DIRECTION' : 'TECHNICAL FOCUS'}
+        </div>
         <p>{project.focus}</p>
       </div>
     )}

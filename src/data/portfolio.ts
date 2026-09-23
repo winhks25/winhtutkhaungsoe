@@ -20,6 +20,14 @@ export type Project = {
   role: string;
   stack: string[];
   repository?: string;
+  plan?: {
+    status: string;
+    target: string;
+    team: string[];
+    command: string;
+    commandDescription: string;
+    features: { title: string; description: string }[];
+  };
   context: string;
   contributions: { title: string; description: string }[];
   focus: string;
@@ -67,26 +75,61 @@ export const projects: Project[] = [
     category: 'DESKTOP APPLICATION',
     headline: 'Less admin. More time for people.',
     description:
-      'A command-first client management app, built for personal trainers between training sessions.',
+      'A CLI-first client tracking app for gym trainers, currently in ideation. Planned to bring client records, training plans, and progress into one visual workspace.',
     period: 'Aug 2026 – Present',
-    role: 'Developer',
+    role: 'Developer & project manager',
     stack: ['Java', 'JavaFX', 'Git'],
+    plan: {
+      status: 'In progress · Ideation phase',
+      target: 'October 2026',
+      team: ['Win Htut Khaung Soe', 'Khoa', 'Hein', 'Fiko', 'Kaiwen'],
+      command: 'add n/Josh g/to lose 10kg',
+      commandDescription:
+        'The proposed command adds Josh as a client and records his goal of losing 10 kg. A graphical interface would present the recorded information for trainers to review.',
+      features: [
+        {
+          title: 'Client information in one place',
+          description:
+            'Keep client details, body measurements, goals, and dietary restrictions together so trainers can refer to them when planning sessions.',
+        },
+        {
+          title: 'Diet and exercise plans',
+          description:
+            'Record each client’s diet and workout plans alongside their profile, keeping the guidance and the person it belongs to connected.',
+        },
+        {
+          title: 'Sessions and fee records',
+          description:
+            'Track workout session dates and times, together with fee-payment records, to keep day-to-day client administration organized.',
+        },
+        {
+          title: 'Progress, with context',
+          description:
+            'Use graphs or diagrams to review progress alongside diet and workout information, helping trainers spot patterns and discuss changes with their clients.',
+        },
+      ],
+    },
     context:
-      'A trainer’s attention belongs with their clients. Fittix is a CLI-first client management application in development, designed to make recording and retrieving client information efficient between training sessions.',
+      'Gym trainers juggle more than exercise sessions: client body information, dietary restrictions, diet and workout plans, fee payments, and session schedules. Fittix aims to bring these records into one place, combining quick, command-driven input with a graphical view of the information.',
     contributions: [
       {
-        title: 'Built around a trainer’s day',
+        title: 'Define the problem and scope',
         description:
-          'Developing a client management application around the practical needs of personal trainers, with efficient access to client information.',
+          'I work as both a developer and project manager. During ideation, I organize meetings, decide on user stories and the problems we should solve, and define the scope of the project.',
       },
       {
-        title: 'Keyboard-first workflows',
+        title: 'Coordinate the five-person team',
         description:
-          'Designing command-driven workflows for recording and retrieving client information without interrupting the flow of a working day.',
+          'I delegate work across the team and track each member’s progress, keeping responsibilities clear as we move through the project phases.',
+      },
+      {
+        title: 'Keep deliverables on track',
+        description:
+          'I coordinate each phase’s deliverables and follow up on progress to keep the team working toward the planned MVP release in October.',
       },
     ],
     focus:
-      'Command-driven interaction design and desktop application development with Java and JavaFX. Development is ongoing.',
+      'The planned technical direction combines Java and JavaFX: fast CLI-first input with a graphical view of client records and progress. The project is currently in ideation; the features above describe the intended scope, with the MVP targeted for October 2026.',
   },
   {
     slug: 'mcnus',
