@@ -53,3 +53,13 @@ The design combines DM Sans with italic Instrument Serif, off-white backgrounds,
 Added responsive navigation with an Escape-key dismissal, an accessible skip link, reduced-motion support, contact links, clipboard feedback, résumé viewing and downloading, and shared SEO metadata. Core content and navigation remain usable when JavaScript is disabled. Copied the supplied résumé unchanged to `public/resume.pdf`.
 
 The initial implementation passed Astro checking with zero errors, warnings, or hints, and generated all five static pages. The browser verification phase follows before the final implementation commit.
+
+## 4. Browser verification and refinements
+
+Added Playwright coverage against the production preview under the real `/winhtutkhaungsoe/` base path, using desktop Chromium and an emulated Pixel 7. The first run passed all functional checks: project navigation, mobile menu dismissal, clipboard success and rejection, PDF download, keyboard skip link, canonical URLs, sitemap, custom 404, and operation without JavaScript. The viewport matrix found no document overflow across all pages at 320, 390, 768, 1024, and 1440 pixels.
+
+The initial axe scans identified insufficient contrast in several muted labels and the decorative mock interfaces. Darkened the affected text colours rather than excluding the artwork from checks. Visual review also prompted more vertical breathing room around the CoMatch illustration on mobile.
+
+Reviewed the complete desktop homepage, mobile homepage, mobile CoMatch page, and generated 1200 × 630 social card. The interface stays fully static; only the menu, section indicator, and clipboard control need JavaScript.
+
+The final verification completed with **30 passing browser tests**, **two intentional skips**, and **zero axe violations** across the eight desktop/mobile page scans. Astro reported zero errors, warnings, or hints. All five static pages built successfully. Also excluded generated browser reports from TypeScript analysis after a repeat check attempted to scan their bundled scripts, and isolated the test preview on port 4322 with foreground execution.

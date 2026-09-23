@@ -36,7 +36,7 @@ export const projects: Project[] = [
       'A teammate-matching platform that helps people find collaborators and turn a shared idea into a conversation.',
     period: 'May 2026 – Present',
     role: 'Full-stack developer',
-    stack: ['Next.js', 'TypeScript', 'Supabase'],
+    stack: ['React', 'Next.js', 'Supabase'],
     repository: 'https://github.com/naymin-gif/CoMatch',
     context:
       'Finding a collaborator is only the first step. CoMatch brings project posts, professional profiles, and one-to-one conversations into a single platform, helping people connect around the things they want to build.',

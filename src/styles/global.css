@@ -548,11 +548,11 @@ h1 {
   transform: rotate(-5deg);
 }
 .code-comment {
-  color: #778071;
+  color: #646f5e;
   font-size: 8px;
 }
 .code-fn {
-  color: #a96b47;
+  color: #975a36;
 }
 .code-string {
   color: #5c7950;
@@ -633,7 +633,7 @@ h1 {
   font-family: var(--mono);
   font-size: 8px;
   letter-spacing: 1px;
-  color: #687260;
+  color: #59644f;
   margin-top: auto;
   padding-top: 29px;
 }
@@ -671,7 +671,7 @@ h1 {
   font-family: var(--mono);
   font-size: 7px;
   letter-spacing: 1px;
-  color: #606b58;
+  color: #4e5b45;
   z-index: 3;
 }
 .match-scene {
@@ -700,7 +700,7 @@ h1 {
   padding: 0 12px;
   font-family: var(--mono);
   font-size: 6px;
-  color: #727e68;
+  color: #5d6952;
 }
 .browser-dots {
   display: flex;
@@ -769,7 +769,7 @@ h1 {
   font-family: var(--mono);
   font-size: 5px;
   letter-spacing: 1px;
-  color: #6e7b63;
+  color: #5d6a52;
 }
 .match-content h3 {
   font-size: 22px;
@@ -779,14 +779,14 @@ h1 {
 }
 .match-content > p {
   font-size: 6px;
-  color: #777c71;
+  color: #626c59;
   margin-top: 5px;
 }
 .mock-search {
   display: flex;
   justify-content: space-between;
   border: 1px solid #dbe1d2;
-  color: #88907f;
+  color: #65705b;
   border-radius: 3px;
   margin-top: 15px;
   padding: 8px;
@@ -1118,7 +1118,7 @@ h1 {
 }
 .community-nav > span {
   font-size: 5px;
-  color: #787766;
+  color: #686754;
 }
 .community-nav i {
   font-size: 10px;
@@ -1264,7 +1264,7 @@ h1 {
 }
 .education-card p {
   font-size: 11px;
-  color: #66715e;
+  color: #58664d;
   margin-top: 6px;
 }
 .education-date {
@@ -1623,7 +1623,7 @@ h1 {
 .contribution-number {
   font-family: var(--mono);
   font-size: 10px;
-  color: #7c8b6a;
+  color: #5c6f49;
   margin-top: 6px;
 }
 .contributions h3 {
@@ -2117,6 +2117,12 @@ h1 {
   }
   .case-art .project-art {
     height: 380px;
+  }
+  .case-art .project-art-comatch {
+    height: 410px;
+  }
+  .case-art .match-scene {
+    transform: rotate(-3deg) translate(0, -12px);
   }
   .case-art .match-content {
     padding: 22px 15px;
