@@ -55,7 +55,7 @@ Tests start their own production preview on port **4322** and run in desktop and
 
 Run `npm run social:generate` after changing the social card’s source. It uses Playwright and local fonts; no external service is needed. Commit the generated `public/social-card.png` as well as the source change.
 
-CoMatch uses actual app screenshots on its homepage preview and detailed case study. Other project illustrations are labelled **Interface concept**. The supplied résumé is the source for biographical claims and project repository links. Fittix has no repository link because none was supplied.
+CoMatch and Myanmar Community at NUS use actual website screenshots in their previews. CoMatch also includes a screenshot-based case study. Fittix’s illustration is labelled **Interface concept**. The supplied résumé is the source for biographical claims and project repository links. Fittix has no repository link because none was supplied.
 
 ## Publish
 

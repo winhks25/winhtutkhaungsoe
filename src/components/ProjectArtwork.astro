@@ -2,6 +2,7 @@
 import type { Project } from '../data/portfolio';
 import { Image } from 'astro:assets';
 import comatchPreview from '../assets/comatch/preview.png';
+import communityPreview from '../assets/mcnus/preview.png';
 interface Props {
   variant: Project['slug'];
 }
@@ -9,10 +10,15 @@ const { variant } = Astro.props;
 ---
 
 <div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
-  {variant === 'comatch' && (
-    <div class="comatch-preview">
+  {variant !== 'fittix' && (
+    <div
+      class:list={[
+        'screenshot-preview',
+        variant === 'comatch' ? 'comatch-preview' : 'community-preview',
+      ]}
+    >
       <Image
-        src={comatchPreview}
+        src={variant === 'comatch' ? comatchPreview : communityPreview}
         alt=""
         widths={[480, 800, 1200, 1600]}
         sizes="(max-width: 760px) 100vw, 720px"
@@ -20,7 +26,11 @@ const { variant } = Astro.props;
         quality={90}
         loading="lazy"
       />
-      <span class="preview-label">COMATCH · APP SCREENSHOT</span>
+      <span class="preview-label">
+        {variant === 'comatch'
+          ? 'COMATCH · APP SCREENSHOT'
+          : 'MC@NUS · WEBSITE SCREENSHOT'}
+      </span>
     </div>
   )}
   {variant === 'fittix' && (
@@ -63,67 +73,42 @@ const { variant } = Astro.props;
       <div class="keyboard-key">↵</div>
     </div>
   )}
-  {variant === 'mcnus' && (
-    <div class="community-scene">
-      <div class="community-window">
-        <div class="community-nav">
-          <b>
-            MC<span>NUS</span>
-          </b>
-          <span>Our story &nbsp; Events &nbsp; Community</span>
-          <i>↗</i>
-        </div>
-        <div class="community-content">
-          <span class="mock-eyebrow">A LITTLE CLOSER TO HOME</span>
-          <h3>
-            Many stories.
-            <br />
-            <em>One community.</em>
-          </h3>
-          <div class="community-shapes">
-            <div class="shape-arch">
-              <span>✳</span>
-            </div>
-            <div class="shape-circle">
-              <span>မင်္ဂလာပါ</span>
-            </div>
-            <div class="shape-square">
-              <span>↗</span>
-            </div>
-          </div>
-          <div class="community-bottom">
-            <span>MYANMAR COMMUNITY AT NUS</span>
-            <span>Connected by belonging. ↗</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )}
-  {variant !== 'comatch' && (
-    <span class="concept-label">INTERFACE CONCEPT</span>
-  )}
+  {variant === 'fittix' && <span class="concept-label">INTERFACE CONCEPT</span>}
 </div>
 
 <style>
-  .comatch-preview {
+  .screenshot-preview {
     width: 100%;
     padding: 28px;
+    --resting-tilt: -3deg;
+    --hover-tilt: -1deg;
   }
 
-  .comatch-preview img {
+  .screenshot-preview img {
     display: block;
     width: 100%;
     height: auto;
     border: 1px solid var(--line);
     border-radius: 6px;
     box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
-    transform: rotate(-3deg);
+    transform: rotate(var(--resting-tilt));
     transition: transform 450ms ease;
   }
 
-  :global(.art-link:hover) .comatch-preview img,
-  :global(.art-link:focus-visible) .comatch-preview img {
-    transform: rotate(-1deg) translateY(-5px);
+  :global(.art-link:hover) .screenshot-preview img,
+  :global(.art-link:focus-visible) .screenshot-preview img {
+    transform: rotate(var(--hover-tilt)) translateY(-5px);
+  }
+
+  .community-preview {
+    max-width: 720px;
+    --resting-tilt: 4deg;
+    --hover-tilt: 1deg;
+  }
+
+  .project-art.project-art-mcnus {
+    height: auto;
+    min-height: 335px;
   }
 
   .preview-label {
@@ -136,24 +121,29 @@ const { variant } = Astro.props;
   }
 
   @media (max-width: 760px) {
-    .project-art.project-art-comatch {
+    .project-art.project-art-comatch,
+    .project-art.project-art-mcnus {
       height: auto;
       min-height: 0;
     }
 
-    .comatch-preview {
+    .screenshot-preview {
       padding: 20px;
+    }
+
+    .community-preview {
+      padding: 28px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .comatch-preview img {
+    .screenshot-preview img {
       transition: none;
     }
 
-    :global(.art-link:hover) .comatch-preview img,
-    :global(.art-link:focus-visible) .comatch-preview img {
-      transform: rotate(-3deg);
+    :global(.art-link:hover) .screenshot-preview img,
+    :global(.art-link:focus-visible) .screenshot-preview img {
+      transform: rotate(var(--resting-tilt));
     }
   }
 </style>

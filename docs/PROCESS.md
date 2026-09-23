@@ -129,3 +129,9 @@ Verification: Astro checking and the production build passed. Nine targeted brow
 Restored a slight -3-degree tilt on the real CoMatch screenshot. Hovering or keyboard-focusing its project link eases the image to -1 degree and lifts it 5px over 450ms, matching the other project previews. The caption stays level with extra clearance below the rotated image. Reduced-motion mode retains the static tilt without animation or position changes.
 
 Verification: the production build passed. A focused Chromium check confirmed distinct resting and hover transforms, matching keyboard-focus feedback, static reduced-motion behaviour, and image bounds within the card at 390px, 760px, and 1440px. Refreshed the existing browser preview.
+
+## 13. Myanmar Community screenshot preview
+
+Replaced the Myanmar Community at NUS illustration with the supplied screenshot dated 23 September 2026 at 12:03:56 PM, copied unchanged to `src/assets/mcnus/preview.png`. The shared artwork component also displays this screenshot on the project detail page. Retained the clockwise 4-degree tilt and 450ms hover/focus transition to 1 degree with a 5px lift. Shared the screenshot styling with CoMatch while preserving its counterclockwise tilt. Both screenshots respect reduced-motion preferences and retain their complete aspect ratios. The caption identifies MC@NUS as a website screenshot.
+
+Verification: Astro checking and the production build passed. Eleven targeted browser checks passed with one intentional skip, covering community-page navigation, homepage/community light and dark accessibility, and responsive document widths. A focused interaction check caught slight clipping at 760px; increased mobile screenshot padding and rechecked all bounds at 320, 390, 760, and 1440px. Hover, keyboard focus, and reduced-motion checks passed. Reviewed the final card screenshot.
