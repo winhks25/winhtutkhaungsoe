@@ -71,3 +71,13 @@ Added a GitHub Actions workflow that validates pull requests and publishes succe
 Completed the README, architecture guide, deployment instructions, and verification notes. Work is recorded in five meaningful commits covering discovery, scaffolding, implementation, testing/refinement, and deployment/documentation. The local preview is available at `http://127.0.0.1:4321/winhtutkhaungsoe/` while the preview server is running.
 
 The site is ready for first publication. No source was pushed and no remote settings were changed. To publish, enable GitHub Actions as the Pages source and push the reviewed portfolio to `main`, following `docs/DEPLOYMENT.md`.
+
+## 6. Readability revision — Farro
+
+The user requested Farro, thicker weights, substantially easier reading, and dark mode. Replaced DM Sans and the thin serif accents with locally hosted Farro Medium (500) and Bold (700), using the actual weights listed in [Google Fonts' Farro metadata](https://github.com/google/fonts/blob/main/ofl/farro/METADATA.pb). Removed the unused font packages and updated the social-card generator.
+
+Raised primary body copy to 17–18px, navigation to 16px, tags and dates to at least 14px, and section labels to 12px. Headings and primary controls use Bold. Kept the compact interface illustrations decorative; their real descriptions appear at readable sizes outside the artwork. Adjusted wrapping and spacing to accommodate the larger type on narrow screens.
+
+Dark mode is the next milestone: an accessible header toggle, saved preference, system-colour preference on first visit, and contrast verification in both appearances.
+
+Typography milestone checks: Astro reported zero diagnostics; the static build passed; all eight light-mode axe scans and the 25-combination layout matrix passed (nine tests, one intentional skip).
