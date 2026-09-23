@@ -4,7 +4,7 @@
 
 Astro generates five HTML pages: the homepage, three project pages, and a custom 404. GitHub Pages serves the result directly. There is no backend, database, server adapter, client-side router, or framework hydration.
 
-`src/data/portfolio.ts` is the main content source. Its typed `Project` records feed both the homepage cards and `getStaticPaths()` in `src/pages/work/[slug].astro`. A project’s optional `repository` field controls whether its GitHub button appears. Do not use placeholder links for missing URLs.
+`src/data/portfolio.ts` is the main content source. Its typed `Project` records feed both the homepage cards and `getStaticPaths()` in `src/pages/work/[slug].astro`. In the existing case-study format, a project’s optional `repository` field controls whether its GitHub button appears. Do not use placeholder links for missing URLs.
 
 The homepage’s introduction and about copy are in `src/pages/index.astro`. Contact links are shared through the profile record. `BaseLayout.astro` supplies consistent navigation, footer, fonts, SEO metadata, and the skip link.
 
@@ -57,9 +57,15 @@ Use `localPath()` for every internal page and public asset. It reads `import.met
 
 The layout derives canonical and Open Graph URLs from `Astro.site` and the requested path. The sitemap integration discovers the generated pages. `robots.txt` contains the deployment-specific sitemap address and must be updated if the hostname or repository changes.
 
-## Extended CoMatch case study
+## Reusable project overviews
 
-`src/data/comatch.ts` holds the CoMatch product walkthrough, screenshots, team credit, demo URL, engineering decisions, and testing descriptions. The shared project template renders these additional sections only for CoMatch. `src/styles/case-study.css` supplies the extended layout using the existing colour tokens. Screenshots in `src/assets/comatch/` are original embedded images from the supplied documentation; Astro generates responsive WebP versions and the gallery links to the full-size originals. See `docs/COMATCH-CASE-STUDY.md` for source pages, attribution boundaries, and maintenance notes.
+Projects with a `details` field use `src/components/projects/ProjectDetails.astro`. This shared layout renders six sections: Overview, Role, Tech Stack, My Contributions, Key Features, and What I Learned. It uses the existing light/dark tokens and stacks into a single column on mobile. No project names, copy, or slug checks are embedded in the components.
+
+`src/data/project-details.ts` defines the `ProjectDetails` content contract. `ProjectSection.astro` handles section headings and layout, `ProjectParagraphs.astro` renders escaped text with optional bold spans, and `ProjectFeatures.astro` renders the feature list. Paragraphs are arrays of text fragments: use strings for normal text and `{ strong: 'highlighted words' }` for emphasis. This preserves source formatting without rendering raw HTML.
+
+CoMatch’s record imports `comatchDetails` from `src/data/comatch.ts`. Its project role and stack reuse the same values for the homepage card. The detail page shows only the supplied Markdown content, alongside shared site navigation, next-project navigation, and contact. Its metadata description uses the supplied overview. See `docs/COMATCH-CASE-STUDY.md` for content and asset provenance.
+
+To move another project to this format, create a `ProjectDetails` object with `overview`, `role`, `stack`, `contributions`, `features`, and `learnings`, then set the project record’s `details` to that object in place of its existing `context`, `contributions`, and `focus` fields. The route chooses the layout by the presence of `details`; no template changes are needed. The `Project` union requires either the new details or the existing case-study fields, so Fittix and Myanmar Community at NUS keep their current content and layout until new copy is supplied.
 
 ## Projects in ideation
 

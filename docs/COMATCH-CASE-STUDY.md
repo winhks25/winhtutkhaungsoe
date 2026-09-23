@@ -1,28 +1,26 @@
-# CoMatch case study: editorial and asset notes
+# CoMatch content and asset notes
 
-## Sources and scope
+## Current content source
 
-The supplied `Proposal for Orbital 26.pdf` is the source for the product workflow, team credit, implementation descriptions, design decisions, and testing coverage. It is a 40-page document containing both proposal language and descriptions/screenshots of a development build. The page describes that documented build; it does not claim a completed release or independently verified usage outcomes.
+The user-supplied `CoMatch.md` is the source for the CoMatch detail page. Its six sections are Overview, Role, Tech Stack, My Contributions, Key Features, and What I Learned. `src/data/comatch.ts` preserves the wording and bold emphasis from that document.
 
-Personal attribution remains limited to the authentication, real-time messaging, and testing work already recorded in the supplied résumé and the portfolio. The documentation uses collective authorship, so product-wide decisions are presented as team decisions. Credit is given to both Win Htut Khaung Soe and Nay Min Thar.
+Personal contributions now describe authentication, profiles, the application dashboard, frontend/backend integration, and UI refactoring within a two-person team. Real-time chat is presented as a product feature. The former engineering decisions, testing descriptions, product walkthrough, timeline, named team credit, demo link, and editorial reflection are no longer rendered on this page.
 
-The live URL supplied in the document, `https://co-match-two.vercel.app/`, was checked in the browser. It redirects to a working sign-in interface with email/password and Google/LinkedIn options. The portfolio labels this link “Sign-in required”. No account was created and authenticated functionality was not independently exercised.
+## Editing the page
 
-## Content map
+- `src/data/comatch.ts`: all six sections in the shared `ProjectDetails` format.
+- `src/data/project-details.ts`: reusable content types, including optional bold paragraph spans.
+- `src/components/projects/`: shared layout, section, paragraph, and feature-list components with responsive styles.
+- `src/data/portfolio.ts`: the homepage summary and the reference to `comatchDetails`.
+- `src/pages/work/[slug].astro`: selects the concise layout for any project with `details`; retains the existing format for other projects.
 
-- Introduction and problem: pages 3–4.
-- Authentication and personal profiles: pages 5–12.
-- Spaces and recruitment: pages 13–21.
-- Applications and notification state: pages 22–25.
-- Chat entry points, conversation model, and Realtime: pages 26–28.
-- Architecture and refactoring: pages 28–34.
-- Unit, integration, and browser test descriptions: pages 35–40.
+No project-specific layout or raw HTML is needed to add another overview. See `docs/ARCHITECTURE.md` for migration instructions.
 
-The testing section distinguishes component rendering/interaction, schema/query checks, and browser route protection. It does not claim complete signed-in workflow coverage, current test totals, or measured performance improvements. The concurrency, cross-tab, and full-journey testing suggestions are editorial next steps, not completed work. No user counts or outcome metrics were invented.
+## Retained screenshot provenance
 
-## Screenshot provenance
+The homepage preview remains `src/assets/comatch/preview.png`, copied unchanged from the user’s screenshot dated 23 September 2026 at 11:56:21 AM. `ProjectArtwork.astro` displays a responsive WebP with an “App screenshot” caption. The full image is visible without cropping.
 
-The following embedded images were extracted unchanged with pypdf; they were not recreated or AI-edited:
+The following images were extracted unchanged with pypdf from the earlier supplied `Proposal for Orbital 26.pdf`. They remain as source assets but are no longer imported by the CoMatch detail page or shipped in its gallery:
 
 | Asset                                | PDF page | Embedded image |
 | ------------------------------------ | -------- | -------------- |
@@ -31,15 +29,4 @@ The following embedded images were extracted unchanged with pypdf; they were not
 | `src/assets/comatch/dashboard.png`   | 24       | X116.png       |
 | `src/assets/comatch/chat.png`        | 28       | X129.png       |
 
-They are labelled “Development screenshot · sample data” because the source contains test project names and casual test messages. The screenshot gallery opens the original images at full resolution. Replace these assets with current screenshots containing curated demo content when available; keep real user information out of that demo data. Do not edit the image to imply functionality or results that the app does not have.
-
-Astro generates responsive WebP copies for page display. The cover loads eagerly; gallery images load lazily. Their intrinsic dimensions reserve layout space, and all generated URLs include the GitHub Pages base path.
-
-## Editing the page
-
-- `src/data/portfolio.ts`: shared project summary and personal contributions.
-- `src/data/comatch.ts`: team, demo URL, introduction, screenshots, workflow, decisions, and testing summaries.
-- `src/pages/work/[slug].astro`: case-study layout, reflection, and status. Extended sections apply only to CoMatch; other projects retain their existing structure.
-- `src/styles/case-study.css`: responsive gallery, section navigation, and extended case-study styling. Uses the shared light/dark tokens.
-
-The homepage CoMatch preview now uses `src/assets/comatch/preview.png`, copied unchanged from the user’s screenshot dated 23 September 2026 at 11:56:21 AM. `ProjectArtwork.astro` displays it as a responsive WebP with an “App screenshot” caption. The full image is visible without cropping, and mobile height follows its aspect ratio. The detailed CoMatch page continues to use the PDF screenshots. An existing user edit to the homepage heading (“My Projects.”) was preserved and is outside this change.
+These development screenshots contain sample data. They are historical references, not additional sources for the current page’s copy.

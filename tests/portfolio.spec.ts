@@ -43,9 +43,7 @@ for (const project of projectPages) {
     await expect(page.getByRole('heading', { level: 1 })).toContainText(
       project.name,
     );
-    await expect(
-      page.getByText('MY CONTRIBUTIONS', { exact: true }),
-    ).toBeVisible();
+    await expect(page.getByText(/^my contributions$/i)).toBeVisible();
     await page.getByRole('link', { name: 'All projects' }).click();
     await expect(page).toHaveURL(`${base}#work`);
   });

@@ -1,91 +1,71 @@
-import spaces from '../assets/comatch/spaces.png';
-import recruitment from '../assets/comatch/recruitment.png';
-import dashboard from '../assets/comatch/dashboard.png';
-import chat from '../assets/comatch/chat.png';
+import type { ProjectDetails } from './project-details';
 
-// Content and screenshot provenance: docs/COMATCH-CASE-STUDY.md.
-export const comatchStudy = {
-  team: 'Win Htut Khaung Soe & Nay Min Thar',
-  demo: 'https://co-match-two.vercel.app/',
-  introduction:
-    'CoMatch helps students find teammates for hackathons, academic projects, and independent ideas. It brings project discovery, role-based recruitment, application tracking, and real-time conversations into one place.',
-  solution:
-    'A shared Space gives each module, competition, or project community a home. Users can create their own Spaces, publish the roles they need, and review potential teammates through profiles and conversations. Recruitment stays connected to the project it belongs to.',
-  cover: {
-    image: spaces,
-    alt: 'CoMatch Spaces page with owned project communities and links to explore or create a Space',
-    caption: 'Spaces bring related projects and potential teammates together.',
-  },
-  journey: [
+// Source: the user-supplied CoMatch.md. See docs/COMATCH-CASE-STUDY.md.
+export const comatchDetails = {
+  overview:
+    'CoMatch is a web platform designed to help students and young adults find compatible teammates for academic projects, hackathons, competitions, and independent projects. Users can create project spaces, publish recruitment posts, apply for specific roles, manage applications, and communicate with potential teammates through real-time messaging.',
+  role: 'Full-stack developer',
+  stack: [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Supabase',
+    'PostgreSQL',
+    'shadcn/ui',
+    'Vercel',
+  ],
+  contributions: [
+    [
+      'As part of a two-person team, I contributed across both the frontend and backend of CoMatch. I implemented core features including ',
+      {
+        strong:
+          'user authentication, user profiles, and the application dashboard',
+      },
+      ', integrating the user interface with Supabase authentication and database operations.',
+    ],
+    [
+      "I also worked extensively on the application's UI using ",
+      { strong: 'React, Next.js, Tailwind CSS, and shadcn/ui' },
+      ', including refactoring and redesigning pages initially developed by my teammate. Through this process, I improved component reusability, code organization, and UI consistency across the application.',
+    ],
+  ],
+  features: [
     {
-      title: 'Discover a project. Find your role.',
+      title: 'Spaces & Recruitment',
       description:
-        'Within a Space, recruitment posts describe the idea, open roles, available positions, and expected weekly commitment. Applicants choose a role and introduce themselves; profiles add context about their skills and interests.',
-      image: recruitment,
-      alt: 'CoMatch recruitment post showing open roles, available positions, and an Apply button',
+        'Create dedicated spaces for projects and publish recruitment posts to find teammates for specific roles.',
     },
     {
-      title: 'Keep every application in view.',
+      title: 'Application Dashboard',
       description:
-        'The dashboard separates requests received from applications sent. Project owners review applicants and confirm decisions, while applicants track pending, approved, or rejected requests. Unread indicators point to new activity.',
-      image: dashboard,
-      alt: 'CoMatch incoming applications dashboard with applicant cards and approved or rejected status badges',
+        'Manage incoming teammate requests and track the status of applications to other projects.',
     },
     {
-      title: 'Turn an introduction into a conversation.',
+      title: 'Profiles',
       description:
-        'Chat links on profiles, posts, and member directories lead into one-to-one messaging. Existing conversations reopen with their history, and new messages arrive through Supabase Realtime without a page refresh.',
-      image: chat,
-      alt: 'CoMatch chat workspace with a conversation list and a two-person message thread',
+        'Create customizable profiles showcasing skills, preferred roles, projects, and external links.',
+    },
+    {
+      title: 'Real-Time Chat',
+      description:
+        'Communicate directly with potential teammates through private, real-time messaging powered by Supabase Realtime.',
     },
   ],
-  decisions: [
-    {
-      title: 'One conversation, whichever person starts it',
-      problem:
-        'The same two people can begin a conversation from several places in the product.',
-      decision:
-        'The documented data model links messages to a conversation between two users. Opening a chat looks for that pair before creating a thread, so the interface can return to the same history.',
-      tradeoff:
-        'A database constraint and concurrent-request testing are important follow-ups: a lookup alone does not guarantee that simultaneous requests cannot create duplicate threads.',
-    },
-    {
-      title: 'Notifications that explain what changed',
-      problem:
-        'An applicant and a project owner need to act on different kinds of updates.',
-      decision:
-        'Separate incoming and outgoing tabs use owner_seen and applicant_seen flags. A global badge draws attention to the dashboard; tab and card indicators identify the request or decision to review.',
-      tradeoff:
-        'Read state adds coordination across the navigation and dashboard. Multiple tabs and simultaneous updates are useful cases for deeper behavioural testing.',
-    },
-    {
-      title: 'Comments that stay with the post',
-      problem:
-        'The documentation records scrolling and focus problems with overlay-based comments.',
-      decision:
-        'Comments expand inside the recruitment card instead. Readers can ask a question while keeping the project details in the same page context.',
-      tradeoff:
-        'Long discussions make cards taller. Collapsing comments keeps the feed manageable; pagination would be a natural next step as discussions grow.',
-    },
+  learnings: [
+    [
+      'Building CoMatch gave me practical experience developing a larger application with ',
+      { strong: 'Next.js and React' },
+      ', beyond smaller standalone projects. I became more comfortable structuring pages and components, managing application state, and connecting the frontend to backend services.',
+    ],
+    [
+      'Working on and refactoring the codebase also helped me better understand software engineering principles such as ',
+      { strong: 'Separation of Concerns, Single Responsibility, and DRY' },
+      '. I learned how reusable components and clear separation between UI, application logic, and data access make a growing codebase easier to maintain.',
+    ],
+    [
+      'I also gained hands-on experience with the ',
+      { strong: 'Supabase ecosystem' },
+      ', including PostgreSQL-backed data, authentication, storage, and real-time functionality, and saw how these services work together in a full-stack application.',
+    ],
   ],
-  testing: [
-    {
-      title: 'Components',
-      tools: 'Vitest · React Testing Library',
-      description:
-        'The documented unit suites cover rendering and interaction for buttons, badges, cards, avatars, and search input, with external dependencies mocked.',
-    },
-    {
-      title: 'Database integration',
-      tools: 'Vitest · Supabase',
-      description:
-        'Integration checks exercise schema and query compatibility for Space membership, conversations and messages, application status, and notification fields.',
-    },
-    {
-      title: 'Browser journeys',
-      tools: 'Playwright',
-      description:
-        'The documented browser suites check login controls, redirects from protected routes, and search-input interaction. These are focused checks, rather than proof of every signed-in workflow.',
-    },
-  ],
-};
+} satisfies ProjectDetails;

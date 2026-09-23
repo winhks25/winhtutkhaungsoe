@@ -1,3 +1,6 @@
+import { comatchDetails } from './comatch';
+import type { ProjectDetails } from './project-details';
+
 export const profile = {
   name: 'Win Htut Khaung Soe',
   shortName: 'Win',
@@ -28,10 +31,14 @@ export type Project = {
     commandDescription: string;
     features: { title: string; description: string }[];
   };
-  context: string;
-  contributions: { title: string; description: string }[];
-  focus: string;
-};
+} & (
+  | { details: ProjectDetails }
+  | {
+      context: string;
+      contributions: { title: string; description: string }[];
+      focus: string;
+    }
+);
 
 export const projects: Project[] = [
   {
@@ -43,30 +50,10 @@ export const projects: Project[] = [
     description:
       'Find teammates for hackathons, academic projects, and independent ideas through shared Spaces, role-based recruitment, and real-time chat.',
     period: 'May 2026 – Present',
-    role: 'Full-stack developer',
-    stack: ['Next.js', 'React', 'Supabase', 'PostgreSQL'],
+    role: comatchDetails.role,
+    stack: comatchDetails.stack,
     repository: 'https://github.com/naymin-gif/CoMatch',
-    context:
-      'Finding teammates often means searching through scattered group chats and spreadsheets. Recruitment posts get buried, availability becomes unclear, and applicants struggle to track responses. CoMatch gives discovery, recruitment, and communication a shared structure.',
-    contributions: [
-      {
-        title: 'Conversations, in real time',
-        description:
-          'I built the one-to-one messaging system with Supabase Realtime, connecting teammate discovery to direct conversations. The workspace brings message history, live updates, and conversation navigation into the same interface.',
-      },
-      {
-        title: 'A secure way in',
-        description:
-          'I integrated Google and LinkedIn OAuth through Supabase Auth and protected routing for the dashboard. This work connected provider callbacks, authenticated sessions, and access to personal application data.',
-      },
-      {
-        title: 'Confidence in the core flows',
-        description:
-          'I contributed testing across the stack using Vitest, database integration checks, and Playwright. The documented coverage includes reusable UI behaviour, database queries, and unauthenticated access to protected pages.',
-      },
-    ],
-    focus:
-      'Real-time communication, authentication, and testing across the full stack.',
+    details: comatchDetails,
   },
   {
     slug: 'fittix',
