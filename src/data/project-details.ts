@@ -54,4 +54,5 @@ export type ProjectDetails = {
   contributionsFormat?: 'paragraphs' | 'list';
   features?: ProjectFeature[];
   learnings: ProjectParagraph[];
+  caseStudy?: 'bike-datalakehouse';
 };

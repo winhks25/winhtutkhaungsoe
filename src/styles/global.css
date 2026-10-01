@@ -507,6 +507,9 @@ h1 {
 .project-art-mcnus {
   background: var(--project-lilac);
 }
+.project-art-bike-datalakehouse {
+  background: var(--project-sage);
+}
 .concept-label {
   position: absolute;
   bottom: 12px;

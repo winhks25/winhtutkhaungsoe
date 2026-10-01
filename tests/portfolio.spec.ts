@@ -6,6 +6,7 @@ const projectPages = [
   { slug: 'comatch', name: 'CoMatch' },
   { slug: 'fittix', name: 'Fittix' },
   { slug: 'mcnus', name: 'Myanmar Community at NUS' },
+  { slug: 'bike-datalakehouse', name: 'Bike Sales Data Lakehouse' },
 ];
 
 test('homepage loads without broken assets or browser errors', async ({

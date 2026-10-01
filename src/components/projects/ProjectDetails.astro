@@ -7,6 +7,7 @@ import ProjectParagraphs from './ProjectParagraphs.astro';
 import ProjectFeatures from './ProjectFeatures.astro';
 import ProjectHero from './ProjectHero.astro';
 import ProjectLinks from './ProjectLinks.astro';
+import BikeDatalakehouseCaseStudy from './BikeDatalakehouseCaseStudy.astro';
 
 interface Props {
   name: string;
@@ -72,6 +73,7 @@ const { name, content } = Astro.props;
       </div>
     </div>
   </header>
+  {content.caseStudy === 'bike-datalakehouse' && <BikeDatalakehouseCaseStudy />}
   <ProjectSection id="contributions-heading" title="My Contributions">
     <ProjectParagraphs
       paragraphs={content.contributions}

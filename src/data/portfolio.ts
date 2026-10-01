@@ -1,6 +1,7 @@
 import { comatchDetails } from './comatch';
 import { fittixDetails } from './fittix';
 import { mcnusDetails } from './mcnus';
+import { bikeDatalakehouseDetails } from './bike-datalakehouse';
 import { projectText } from './project-details';
 import type { ProjectDetails } from './project-details';
 
@@ -16,7 +17,7 @@ export const profile = {
 };
 
 export type Project = {
-  slug: 'comatch' | 'fittix' | 'mcnus';
+  slug: 'comatch' | 'fittix' | 'mcnus' | 'bike-datalakehouse';
   number: string;
   name: string;
   category: string;
@@ -31,8 +32,21 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'comatch',
+    slug: 'bike-datalakehouse',
     number: '01',
+    name: 'Bike Sales Data Lakehouse',
+    category: 'DATA ENGINEERING',
+    headline: bikeDatalakehouseDetails.tagline,
+    description:
+      'An end-to-end Databricks lakehouse that turns fragmented CRM and ERP bike-sales data into a validated, analytics-ready star schema.',
+    period: '2026',
+    role: bikeDatalakehouseDetails.role,
+    stack: ['Databricks', 'PySpark', 'Spark SQL', 'Delta Lake'],
+    details: bikeDatalakehouseDetails,
+  },
+  {
+    slug: 'comatch',
+    number: '02',
     name: 'CoMatch',
     category: 'FULL-STACK DEVELOPMENT',
     headline: 'Great ideas deserve great teammates.',
@@ -46,7 +60,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'fittix',
-    number: '02',
+    number: '03',
     name: 'Fittix',
     category: 'DESKTOP APPLICATION',
     headline: fittixDetails.tagline,
@@ -59,7 +73,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'mcnus',
-    number: '03',
+    number: '04',
     name: 'Myanmar Community at NUS',
     category: 'FRONTEND & COMMUNITY',
     headline: mcnusDetails.tagline,
