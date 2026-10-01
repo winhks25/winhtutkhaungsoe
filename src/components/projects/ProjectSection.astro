@@ -6,34 +6,85 @@ interface Props {
 const { id, title } = Astro.props;
 ---
 
-<section class="project-section" aria-labelledby={id}>
-  <h2 id={id}>{title}</h2>
+<details class="project-section">
+  <summary class="project-section-toggle">
+    <h2 id={id}>{title}</h2>
+    <span class="project-section-action" aria-hidden="true"></span>
+  </summary>
   <div class="project-section-content">
     <slot />
   </div>
-</section>
+</details>
 
 <style>
   .project-section {
+    display: block;
+    padding-block: 44px;
+    border-top: 1px solid var(--line);
+  }
+  .project-section-toggle {
+    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2fr);
     gap: 48px;
-    padding-block: 44px;
-    border-top: 1px solid var(--line);
+    align-self: start;
+    cursor: pointer;
+    list-style: none;
+  }
+  .project-section-toggle::-webkit-details-marker {
+    display: none;
+  }
+  .project-section-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+    border-radius: 2px;
   }
   h2 {
     font-size: 23px;
     line-height: 1.45;
     letter-spacing: -0.5px;
   }
+  .project-section-action {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    justify-self: end;
+    align-self: center;
+    place-items: center;
+    color: var(--ink);
+    font-family: sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .project-section-action::before {
+    content: '+';
+  }
+  .project-section[open] .project-section-action::before {
+    content: '−';
+  }
   .project-section-content {
+    width: auto;
     min-width: 0;
+    margin-top: 28px;
+    margin-left: calc(28.571% + 34.286px);
+  }
+  @media (hover: hover) {
+    .project-section-toggle:hover .project-section-action {
+      color: var(--accent);
+    }
   }
   @media (max-width: 760px) {
     .project-section {
-      grid-template-columns: 1fr;
-      gap: 22px;
       padding-block: 32px;
+    }
+    .project-section-toggle {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+    }
+    .project-section-content {
+      margin-top: 22px;
+      margin-left: 0;
     }
   }
 </style>

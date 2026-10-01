@@ -35,6 +35,7 @@ test('homepage loads without broken assets or browser errors', async ({
 for (const project of projectPages) {
   test(`${project.name} opens from the homepage and returns to selected work`, async ({
     page,
+    isMobile,
   }) => {
     await page.goto(base);
     await page
@@ -44,7 +45,54 @@ for (const project of projectPages) {
     await expect(page.getByRole('heading', { level: 1 })).toContainText(
       project.name,
     );
-    await expect(page.getByText(/^my contributions$/i)).toBeVisible();
+    const projectSections = page.locator('details.project-section');
+    expect(
+      await projectSections.evaluateAll((sections) =>
+        sections.every((section) => !section.hasAttribute('open')),
+      ),
+    ).toBe(true);
+    const contributionsSection = page
+      .getByRole('heading', { name: 'My Contributions' })
+      .locator('../..');
+    const sectionAction = contributionsSection.locator(
+      '.project-section-action',
+    );
+    expect(
+      await sectionAction.evaluate(
+        (element) => getComputedStyle(element, '::before').content,
+      ),
+    ).toBe('"+"');
+    await sectionAction.click();
+    await expect(contributionsSection).toHaveAttribute('open', '');
+    const sectionBounds = await contributionsSection.evaluate((section) => {
+      const sectionRect = section.getBoundingClientRect();
+      const contentRect = section
+        .querySelector('.project-section-content')!
+        .getBoundingClientRect();
+      return {
+        sectionLeft: sectionRect.left,
+        sectionRight: sectionRect.right,
+        contentLeft: contentRect.left,
+        contentRight: contentRect.right,
+      };
+    });
+    expect(
+      Math.abs(sectionBounds.sectionRight - sectionBounds.contentRight),
+    ).toBeLessThan(1);
+    if (isMobile) {
+      expect(
+        Math.abs(sectionBounds.sectionLeft - sectionBounds.contentLeft),
+      ).toBeLessThan(1);
+    } else {
+      expect(
+        sectionBounds.contentLeft - sectionBounds.sectionLeft,
+      ).toBeGreaterThan(200);
+    }
+    expect(
+      await sectionAction.evaluate(
+        (element) => getComputedStyle(element, '::before').content,
+      ),
+    ).toBe('"−"');
     await page.getByRole('link', { name: 'All projects' }).click();
     await expect(page).toHaveURL(`${base}#work`);
   });
