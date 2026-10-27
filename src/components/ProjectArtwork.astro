@@ -5,6 +5,7 @@ import comatchPreview from '../assets/comatch/preview.png';
 import communityPreview from '../assets/mcnus/preview.png';
 import bikeHero from '../assets/bike-datalakehouse/hero.png';
 import exchangePreview from '../assets/nus-exchange-planner/preview.png';
+import fittixUI from '../assets/fittix/fittixUI.png';
 interface Props {
   variant: Project['slug'];
 }
@@ -63,46 +64,19 @@ const { variant } = Astro.props;
     </div>
   )}
   {variant === 'fittix' && (
-    <div class="terminal-scene">
-      <div class="terminal-window">
-        <div class="terminal-bar">
-          <div class="browser-dots">
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-          <span>fittix — client workspace</span>
-          <span>⌘</span>
-        </div>
-        <div class="terminal-content">
-          <span class="terminal-logo">
-            fittix<span>_</span>
-          </span>
-          <p>More coaching. Less clicking.</p>
-          <div class="terminal-rule"></div>
-          <div class="terminal-command">
-            <span>❯</span> find Alex
-          </div>
-          <div class="terminal-result">
-            <span class="terminal-person">AL</span>
-            <div>
-              <b>Alex Lee</b>
-              <span>Client profile · Ready when you are</span>
-            </div>
-            <span class="terminal-status">ACTIVE</span>
-          </div>
-          <div class="terminal-command terminal-prompt">
-            <span>❯</span> <i></i>
-          </div>
-          <div class="terminal-hint">
-            YOUR NEXT ACTION IS JUST A COMMAND AWAY.
-          </div>
-        </div>
-      </div>
-      <div class="keyboard-key">↵</div>
+    <div class="screenshot-preview fittix-preview">
+      <Image
+        src={fittixUI}
+        alt=""
+        widths={[480, 800, 1200, 1600, 2000]}
+        sizes="(max-width: 760px) 100vw, 720px"
+        format="webp"
+        quality={90}
+        loading="lazy"
+      />
+      <span class="preview-label">FITTIX · APP SCREENSHOT</span>
     </div>
   )}
-  {variant === 'fittix' && <span class="concept-label">INTERFACE CONCEPT</span>}
   {variant === 'bike-datalakehouse' && (
     <div class="screenshot-preview bike-preview">
       <Image
@@ -165,6 +139,11 @@ const { variant } = Astro.props;
   }
 
   .bike-preview {
+    --resting-tilt: -2deg;
+    --hover-tilt: 0deg;
+  }
+
+  .fittix-preview {
     --resting-tilt: -2deg;
     --hover-tilt: 0deg;
   }
