@@ -132,6 +132,18 @@ test('exchange technical diagrams work without JavaScript', async ({
     const response = await page.request.get((await link.getAttribute('href'))!);
     expect(response.ok()).toBeTruthy();
     expect(await response.text()).toContain('<svg');
+    const href = (await link.getAttribute('href'))!;
+    expect(href).toMatch(/^\/winhtutkhaungsoe\/diagrams\//);
+    await link.click();
+    await expect(page).toHaveURL(new URL(href, baseURL).href);
+    await expect(page.locator('svg')).toBeVisible();
+    await page.goBack();
+    const section = page
+      .locator('details')
+      .filter({ hasText: 'Technical Highlights' });
+    if ((await section.getAttribute('open')) === null) {
+      await page.getByText('Technical Highlights', { exact: true }).click();
+    }
   }
   expect(
     await page.evaluate(

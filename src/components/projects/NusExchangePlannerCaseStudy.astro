@@ -1,7 +1,10 @@
 ---
-import architecture from '../../assets/nus-exchange-planner/architecture.svg?url';
-import erDiagram from '../../assets/nus-exchange-planner/er-diagram.svg?url';
+import { localPath } from '../../utils/paths';
 import ProjectSection from './ProjectSection.astro';
+const architecture = localPath(
+  'diagrams/nus-exchange-planner/architecture.svg',
+);
+const erDiagram = localPath('diagrams/nus-exchange-planner/er-diagram.svg');
 ---
 
 <ProjectSection id="technical-highlights-heading" title="Technical Highlights">
