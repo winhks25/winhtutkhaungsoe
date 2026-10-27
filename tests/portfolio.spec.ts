@@ -167,7 +167,7 @@ test('mobile navigation supports keyboard dismissal and section links', async ({
   await expect(toggle).toBeFocused();
   await toggle.click();
   await nav.getByRole('link', { name: 'About' }).click();
-  await expect(page).toHaveURL(/#about$/);
+  await expect(page).toHaveURL(base);
   await expect(nav).toBeHidden();
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 });

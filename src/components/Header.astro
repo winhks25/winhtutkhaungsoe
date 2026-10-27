@@ -12,21 +12,12 @@ const sectionLink = (id: string) =>
       win<span>.</span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href={sectionLink('work')}>Work</a>
-      <a href={sectionLink('about')}>About</a>
-      <a href={sectionLink('experience')}>Experience</a>
+      <a href={localPath()}>About</a>
+      <a href={sectionLink('work')}>Projects</a>
+      <a href={sectionLink('experience')}>Community Works</a>
       <a href={sectionLink('contact')}>Contact</a>
     </nav>
     <div class="header-actions">
-      <a
-        class="resume-link"
-        href={localPath('resume.pdf')}
-        target="_blank"
-        rel="noopener"
-      >
-        Résumé <Icon name="arrow-up-right" size={16} />
-        <span class="sr-only"> (PDF, opens in a new tab)</span>
-      </a>
       <button
         class="theme-toggle"
         type="button"
@@ -56,14 +47,14 @@ const sectionLink = (id: string) =>
     aria-label="Mobile navigation"
     hidden
   >
-    <a href={sectionLink('work')}>
-      Work <span>01</span>
+    <a href={localPath()}>
+      About <span>01</span>
     </a>
-    <a href={sectionLink('about')}>
-      About <span>02</span>
+    <a href={sectionLink('work')}>
+      Projects <span>02</span>
     </a>
     <a href={sectionLink('experience')}>
-      Experience <span>03</span>
+      Community Works <span>03</span>
     </a>
     <a href={sectionLink('contact')}>
       Contact <Icon name="arrow-up-right" />
