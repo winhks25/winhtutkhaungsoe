@@ -2,9 +2,7 @@ import { comatchDetails } from './comatch';
 import { nusExchangePlannerDetails } from './nus-exchange-planner';
 import { brewgoDetails } from './brewgo';
 import { fittixDetails } from './fittix';
-import { mcnusDetails } from './mcnus';
 import { bikeDatalakehouseDetails } from './bike-datalakehouse';
-import { projectText } from './project-details';
 import type { ProjectDetails } from './project-details';
 
 export const profile = {
@@ -80,21 +78,8 @@ export const projects: Project[] = [
     details: fittixDetails,
   },
   {
-    slug: 'mcnus',
-    number: '04',
-    name: 'Myanmar Community at NUS',
-    category: 'FRONTEND & COMMUNITY',
-    headline: mcnusDetails.tagline,
-    description: projectText(mcnusDetails.overview.slice(0, 1)),
-    period: 'May 2026 – Present',
-    role: mcnusDetails.role,
-    stack: ['Next.js', 'shadcn/ui', 'Git'],
-    repository: 'https://github.com/ZweZeya/mcnus',
-    details: mcnusDetails,
-  },
-  {
     slug: 'nus-exchange-planner',
-    number: '05',
+    number: '04',
     name: 'NUS Exchange Planner',
     category: 'FULL-STACK DEVELOPMENT',
     headline: nusExchangePlannerDetails.tagline,
@@ -108,7 +93,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'brewgo',
-    number: '06',
+    number: '05',
     name: 'BrewGo',
     category: 'FULL-STACK DEVELOPMENT',
     headline: brewgoDetails.tagline,

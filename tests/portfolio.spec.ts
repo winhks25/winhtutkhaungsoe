@@ -7,7 +7,6 @@ const projectPages = [
   { slug: 'nus-exchange-planner', name: 'NUS Exchange Planner' },
   { slug: 'comatch', name: 'CoMatch' },
   { slug: 'fittix', name: 'Fittix' },
-  { slug: 'mcnus', name: 'Myanmar Community at NUS' },
   { slug: 'bike-datalakehouse', name: 'Bike Sales Data Lakehouse' },
 ];
 
