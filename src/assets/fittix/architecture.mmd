@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph UI["UI Layer (ui/)"]
+        App["App.java"]
+        MainWindow["MainWindow.java"]
+    end
+
+    subgraph Logic["Logic Layer (logic/)"]
+        CommandManager["CommandManager.java<br/>parses & executes commands"]
+        Parser["CommandParser"]
+        Catalog["CommandCatalog<br/>command → Parser mapping"]
+    end
+
+    subgraph Commands["Command Layer (logic/commands/)"]
+        Pay["PayCommand"]
+        Add["AddCommand"]
+        Edit["EditCommand"]
+        Undo["UndoCommand<br/>marker only"]
+    end
+
+    subgraph Model["Model Layer (model/)"]
+        Data["UserObjectModel<br/>AddressBook, Person"]
+        SortData["SortPredicate / filtered list"]
+    end
+
+    subgraph Storage["Storage Layer (storage/)"]
+        Json["JsonAddressBookStorage<br/>save/load .json"]
+    end
+
+    App -->|parse input string| CommandManager
+    CommandManager -->|route by word| Parser
+    Parser -->|look up| Catalog
+    Catalog -->|create instance| Pay
+    Catalog -->|create instance| Add
+    Catalog -->|create instance| Edit
+    Pay -->|execute| Model
+    Add -->|execute| Model
+    Edit -->|execute| Model
+    Model -->|persist on mutation| LogicManager
+    LogicManager -->|snapshot/rollback| Undo
+    Model -->|serialize| Json
+    Undo -->|restore snapshot| Model
+
+    style Model fill:#e1f5ff
+    style Commands fill:#fff4e1
+    classDef layer fill:#f5f5f5,stroke:#999;

@@ -1,0 +1,59 @@
+---
+import { localPath } from '../../utils/paths';
+import ProjectSection from './ProjectSection.astro';
+const architecture = localPath('diagrams/fittix/architecture.svg');
+---
+
+<ProjectSection id="technical-highlights-heading" title="Technical Highlights">
+  <figure>
+    <h3>Modular and Extensible Architecture</h3>
+    <p>
+      Designed with a modular architecture that separates core functionalities
+      into independent components, making the system easier to maintain, test,
+      and extend. New features can be added with minimal changes to existing
+      code, improving scalability and long-term maintainability.
+    </p>
+    <a href={architecture} aria-label="Open architecture diagram at full size">
+      <img
+        src={architecture}
+        alt="Layered architecture: the UI layer hands the parsed input string to CommandManager, which routes it through CommandParser and CommandCatalog to command objects such as PayCommand, AddCommand, and EditCommand. Commands execute against the Model layer, which serializes to JsonAddressBookStorage, while LogicManager provides snapshots for undo and rollback."
+        loading="lazy"
+      />
+    </a>
+    <figcaption>Select the diagram to view it at full size.</figcaption>
+  </figure>
+</ProjectSection>
+
+<style>
+  figure {
+    margin: 0;
+  }
+  h3 {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  p {
+    max-width: 720px;
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  a {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figcaption {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+</style>

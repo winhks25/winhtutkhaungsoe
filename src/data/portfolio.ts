@@ -68,13 +68,14 @@ export const projects: Project[] = [
     slug: 'fittix',
     number: '03',
     name: 'Fittix',
-    category: 'DESKTOP APPLICATION',
+    category: 'FULL-STACK DEVELOPMENT · JAVA DESKTOP APP',
     headline: fittixDetails.tagline,
     description:
       'A CLI-first client management and tracking app for gym trainers, in active development. Brings client information, workout tracking, progress visualization, and scheduling into one place.',
     period: 'Aug 2026 – Present',
     role: fittixDetails.role,
     stack: fittixDetails.stack,
+    repository: 'https://github.com/AY2627S1-CS2103T-T14-1/tp',
     details: fittixDetails,
   },
   {

@@ -54,5 +54,5 @@ export type ProjectDetails = {
   contributionsFormat?: 'paragraphs' | 'list';
   features?: ProjectFeature[];
   learnings: ProjectParagraph[];
-  caseStudy?: 'bike-datalakehouse' | 'nus-exchange-planner';
+  caseStudy?: 'bike-datalakehouse' | 'fittix' | 'nus-exchange-planner';
 };
