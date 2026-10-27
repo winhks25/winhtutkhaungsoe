@@ -32,15 +32,7 @@ export const fittixDetails = {
     ],
   ],
   role: 'Full-stack developer, Project Lead',
-  stack: [
-    'Java 25',
-    'Gradle',
-    'JavaFX',
-    'CSS',
-    'TestFX',
-    'OpenFX',
-    'JUnit 5',
-  ],
+  stack: ['Java 25', 'Gradle', 'JavaFX', 'CSS', 'TestFX', 'OpenFX', 'JUnit 5'],
   status: ['In progress'],
   contributions: [
     [
