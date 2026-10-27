@@ -1,4 +1,5 @@
 import { comatchDetails } from './comatch';
+import { nusExchangePlannerDetails } from './nus-exchange-planner';
 import { fittixDetails } from './fittix';
 import { mcnusDetails } from './mcnus';
 import { bikeDatalakehouseDetails } from './bike-datalakehouse';
@@ -17,7 +18,12 @@ export const profile = {
 };
 
 export type Project = {
-  slug: 'comatch' | 'fittix' | 'mcnus' | 'bike-datalakehouse';
+  slug:
+    | 'comatch'
+    | 'fittix'
+    | 'mcnus'
+    | 'bike-datalakehouse'
+    | 'nus-exchange-planner';
   number: string;
   name: string;
   category: string;
@@ -83,6 +89,20 @@ export const projects: Project[] = [
     stack: ['Next.js', 'shadcn/ui', 'Git'],
     repository: 'https://github.com/ZweZeya/mcnus',
     details: mcnusDetails,
+  },
+  {
+    slug: 'nus-exchange-planner',
+    number: '05',
+    name: 'NUS Exchange Planner',
+    category: 'FULL-STACK DEVELOPMENT',
+    headline: nusExchangePlannerDetails.tagline,
+    description:
+      'Explore exchange destinations, compare course mappings, and find partner universities that fit your NUS degree.',
+    period: 'In progress',
+    role: nusExchangePlannerDetails.role,
+    stack: ['Next.js', 'FastAPI', 'Supabase', 'PostgreSQL'],
+    repository: nusExchangePlannerDetails.links[0].href,
+    details: nusExchangePlannerDetails,
   },
 ];
 

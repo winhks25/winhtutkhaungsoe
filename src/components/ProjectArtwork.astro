@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import comatchPreview from '../assets/comatch/preview.png';
 import communityPreview from '../assets/mcnus/preview.png';
 import bikeHero from '../assets/bike-datalakehouse/hero.png';
+import exchangePreview from '../assets/nus-exchange-planner/preview.png';
 interface Props {
   variant: Project['slug'];
 }
@@ -11,7 +12,21 @@ const { variant } = Astro.props;
 ---
 
 <div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
-  {variant !== 'fittix' && variant !== 'bike-datalakehouse' && (
+  {variant === 'nus-exchange-planner' && (
+    <div class="screenshot-preview">
+      <Image
+        src={exchangePreview}
+        alt=""
+        widths={[480, 800, 1200, 1600]}
+        sizes="(max-width: 760px) 100vw, 720px"
+        format="webp"
+        quality={90}
+        loading="lazy"
+      />
+      <span class="preview-label">NUS EXCHANGE PLANNER · APP SCREENSHOT</span>
+    </div>
+  )}
+  {(variant === 'comatch' || variant === 'mcnus') && (
     <div
       class:list={[
         'screenshot-preview',

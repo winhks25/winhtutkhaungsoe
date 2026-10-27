@@ -85,9 +85,11 @@ const { name, content } = Astro.props;
       <ProjectFeatures features={content.features} />
     </ProjectSection>
   )}
-  <ProjectSection id="learnings-heading" title="What I Learned">
-    <ProjectParagraphs paragraphs={content.learnings} />
-  </ProjectSection>
+  {content.learnings.length > 0 && (
+    <ProjectSection id="learnings-heading" title="What I Learned">
+      <ProjectParagraphs paragraphs={content.learnings} />
+    </ProjectSection>
+  )}
 </article>
 
 <style>

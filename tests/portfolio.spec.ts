@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 const base = '/winhtutkhaungsoe/';
 const projectPages = [
+  { slug: 'nus-exchange-planner', name: 'NUS Exchange Planner' },
   { slug: 'comatch', name: 'CoMatch' },
   { slug: 'fittix', name: 'Fittix' },
   { slug: 'mcnus', name: 'Myanmar Community at NUS' },
