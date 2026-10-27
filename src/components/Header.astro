@@ -12,7 +12,7 @@ const sectionLink = (id: string) =>
       win<span>.</span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href={localPath()}>About</a>
+      <a href={sectionLink('top')}>About</a>
       <a href={sectionLink('work')}>Projects</a>
       <a href={sectionLink('experience')}>Community Works</a>
       <a href={sectionLink('contact')}>Contact</a>
@@ -47,7 +47,7 @@ const sectionLink = (id: string) =>
     aria-label="Mobile navigation"
     hidden
   >
-    <a href={localPath()}>
+    <a href={sectionLink('top')}>
       About <span>01</span>
     </a>
     <a href={sectionLink('work')}>
