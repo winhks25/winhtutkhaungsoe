@@ -353,8 +353,7 @@ h1 {
   letter-spacing: inherit;
 }
 .hero-description {
-  max-width: 540px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.75;
   color: var(--muted);
   margin-top: 26px;
@@ -1132,7 +1131,7 @@ h1 {
   padding-inline: 6px;
 }
 .skills-section {
-  border-top: 1px solid var(--line);
+  
   padding-top: 34px;
   margin-top: 65px;
 }

@@ -23,7 +23,7 @@ test('homepage loads without broken assets or browser errors', async ({
   expect(response?.status()).toBe(200);
   await page.evaluate(() => document.fonts.ready);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-    'Thoughtful code.Human impact.',
+    'Win Htut Khaung Soe.',
   );
   await expect(
     page.getByRole('link', { name: 'Explore my work' }),
