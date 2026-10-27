@@ -1,5 +1,6 @@
 import { comatchDetails } from './comatch';
 import { nusExchangePlannerDetails } from './nus-exchange-planner';
+import { brewgoDetails } from './brewgo';
 import { fittixDetails } from './fittix';
 import { mcnusDetails } from './mcnus';
 import { bikeDatalakehouseDetails } from './bike-datalakehouse';
@@ -23,7 +24,8 @@ export type Project = {
     | 'fittix'
     | 'mcnus'
     | 'bike-datalakehouse'
-    | 'nus-exchange-planner';
+    | 'nus-exchange-planner'
+    | 'brewgo';
   number: string;
   name: string;
   category: string;
@@ -103,6 +105,19 @@ export const projects: Project[] = [
     stack: ['Next.js', 'FastAPI', 'Supabase', 'PostgreSQL'],
     repository: nusExchangePlannerDetails.links[0].href,
     details: nusExchangePlannerDetails,
+  },
+  {
+    slug: 'brewgo',
+    number: '06',
+    name: 'BrewGo',
+    category: 'FULL-STACK DEVELOPMENT',
+    headline: brewgoDetails.tagline,
+    description:
+      'A queue management system for a charity coffee booth, connecting staff orders, preparation progress, and customer pickup.',
+    period: 'In progress',
+    role: brewgoDetails.role,
+    stack: brewgoDetails.stack,
+    details: brewgoDetails,
   },
 ];
 

@@ -12,6 +12,19 @@ const { variant } = Astro.props;
 ---
 
 <div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
+  {variant === 'brewgo' && (
+    <div class="brewgo-cover">
+      <span class="eyebrow">CHARITY COFFEE · IN PROGRESS</span>
+      <strong>
+        BrewGo<span>.</span>
+      </strong>
+      <p>
+        A smoother queue.
+        <br />A better coffee break.
+      </p>
+      <span class="preview-label">ORDERS → QUEUE → COLLECTION</span>
+    </div>
+  )}
   {variant === 'nus-exchange-planner' && (
     <div class="screenshot-preview">
       <Image
@@ -107,6 +120,21 @@ const { variant } = Astro.props;
 </div>
 
 <style>
+  .brewgo-cover {
+    width: 100%;
+    padding: 32px;
+    color: var(--ink);
+    background: var(--surface);
+  }
+  .brewgo-cover strong {
+    display: block;
+    margin-block: 24px 12px;
+    font-size: clamp(40px, 7vw, 72px);
+    letter-spacing: -0.04em;
+  }
+  .brewgo-cover strong span {
+    color: var(--accent);
+  }
   .screenshot-preview {
     width: 100%;
     padding: 28px;
