@@ -41,11 +41,8 @@ export const nusExchangePlannerDetails = {
     'Uvicorn',
   ],
   status: ['In progress'],
-  contributions: [
-    [
-      'Developing the application as an individual full-stack project, connecting the university discovery interface with recommendation logic and course-mapping data.',
-    ],
-  ],
+  contributions: [],
+  caseStudy: 'nus-exchange-planner',
   features: [
     {
       title: 'University Recommendations',

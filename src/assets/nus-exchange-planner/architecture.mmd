@@ -1,0 +1,17 @@
+flowchart TD
+    User[Student] --> Browser[Web Browser]
+    Browser --> Frontend[Next.js Frontend<br/>React + TypeScript]
+    Frontend --> Recommend[University Recommendations]
+    Frontend --> Directory[University Directory]
+    Frontend --> Filters[Faculty & Geographic Filters]
+    Frontend --> Mappings[Course Mappings]
+    Frontend --> Navigation[Persistent URL Navigation]
+    Recommend --> Backend[FastAPI Backend]
+    Directory --> Backend
+    Filters --> Backend
+    Mappings --> Backend
+    Navigation --> Backend
+    Backend --> Logic[Recommendation & Mapping Logic]
+    Logic --> Database[(Supabase PostgreSQL<br/>Production Database)]
+    Backend -. Local development<br/>or rollback .-> JSON[(JSON Catalog Snapshot)]
+    Admin[SQL Migrations] --> Database

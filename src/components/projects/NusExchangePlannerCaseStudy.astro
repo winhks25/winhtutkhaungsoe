@@ -1,0 +1,62 @@
+---
+import architecture from '../../assets/nus-exchange-planner/architecture.svg?url';
+import erDiagram from '../../assets/nus-exchange-planner/er-diagram.svg?url';
+import ProjectSection from './ProjectSection.astro';
+---
+
+<ProjectSection id="technical-highlights-heading" title="Technical Highlights">
+  <figure>
+    <h3>Architecture Diagrams</h3>
+    <a href={architecture} aria-label="Open architecture diagram at full size">
+      <img
+        src={architecture}
+        alt="Student browser connects to Next.js features, FastAPI recommendation and mapping logic, and Supabase PostgreSQL. A JSON catalog supports local development or rollback; SQL migrations update the database."
+        loading="lazy"
+      />
+    </a>
+    <figcaption>Select the diagram to view it at full size.</figcaption>
+  </figure>
+  <figure>
+    <h3>ER Diagram</h3>
+    <a href={erDiagram} aria-label="Open ER diagram at full size">
+      <img
+        src={erDiagram}
+        alt="Eleven-table entity relationship diagram linking faculties, degrees, specializations, NUS modules, partner universities, partner modules, and course mappings through their join tables. Primary, foreign, and unique keys are marked."
+        loading="lazy"
+      />
+    </a>
+    <figcaption>
+      Select the diagram to inspect all fields, keys, and relationships.
+    </figcaption>
+  </figure>
+</ProjectSection>
+
+<style>
+  figure {
+    margin: 0;
+  }
+  figure + figure {
+    margin-top: 32px;
+  }
+  h3 {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  a {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figcaption {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+</style>

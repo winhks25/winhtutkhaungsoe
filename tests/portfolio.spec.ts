@@ -54,7 +54,12 @@ for (const project of projectPages) {
       ),
     ).toBe(true);
     const contributionsSection = page
-      .getByRole('heading', { name: 'My Contributions' })
+      .getByRole('heading', {
+        name:
+          project.slug === 'nus-exchange-planner'
+            ? 'Technical Highlights'
+            : 'My Contributions',
+      })
       .locator('../..');
     const sectionAction = contributionsSection.locator(
       '.project-section-action',
@@ -99,6 +104,42 @@ for (const project of projectPages) {
     await expect(page).toHaveURL(`${base}#work`);
   });
 }
+
+test('exchange technical diagrams work without JavaScript', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 320, height: 900 },
+  });
+  const page = await context.newPage();
+  await page.goto(`${baseURL}${base}work/nus-exchange-planner/`);
+  await expect(
+    page.getByRole('heading', { name: 'My Contributions' }),
+  ).toHaveCount(0);
+  await page.getByText('Technical Highlights', { exact: true }).click();
+  for (const name of ['architecture', 'ER']) {
+    const link = page.getByRole('link', {
+      name: `Open ${name} diagram at full size`,
+    });
+    const image = link.locator('img');
+    await image.scrollIntoViewIfNeeded();
+    await expect(image).toBeVisible();
+    await expect
+      .poll(() => image.evaluate((img: HTMLImageElement) => img.naturalWidth))
+      .toBeGreaterThan(0);
+    const response = await page.request.get((await link.getAttribute('href'))!);
+    expect(response.ok()).toBeTruthy();
+    expect(await response.text()).toContain('<svg');
+  }
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+  await context.close();
+});
 
 test('mobile navigation supports keyboard dismissal and section links', async ({
   page,

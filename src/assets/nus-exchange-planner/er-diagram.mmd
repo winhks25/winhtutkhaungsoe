@@ -1,0 +1,76 @@
+erDiagram
+    direction TB
+    faculties {
+        bigint id PK
+        text name UK
+    }
+    degrees {
+        bigint id PK
+        text name UK
+        text full_title
+    }
+    degree_faculties {
+        bigint degree_id PK,FK
+        bigint faculty_id PK,FK
+    }
+    nus_modules {
+        text code PK
+        text name
+        text faculty
+        numeric units
+        bigint faculty_id FK
+    }
+    degree_modules {
+        bigint degree_id PK,FK
+        text module_code PK,FK
+        text requirement_type
+        text module_type
+    }
+    specializations {
+        bigint id PK
+        bigint degree_id FK
+        text name
+    }
+    specialization_modules {
+        bigint specialization_id PK,FK
+        text module_code PK,FK
+    }
+    partner_universities {
+        bigint id PK
+        text name UK
+        text country
+        text city
+        text continent
+        text image
+        text website
+        text image_attribution
+    }
+    pu_modules {
+        bigint id PK
+        text code
+        text name
+        bigint partner_university_id FK
+        numeric pu_units
+    }
+    module_mappings {
+        bigint id PK
+        text nus_module_code FK
+        bigint pu_module_id FK
+    }
+    faculty_partner_universities {
+        bigint faculty_id PK,FK
+        bigint partner_university_id PK,FK
+    }
+    faculties |o--o{ nus_modules : offers
+    faculties ||--o{ degree_faculties : has
+    degrees ||--o{ degree_faculties : belongs_to
+    degrees ||--o{ degree_modules : requires
+    nus_modules ||--o{ degree_modules : included_in
+    degrees ||--o{ specializations : contains
+    specializations ||--o{ specialization_modules : includes
+    nus_modules ||--o{ specialization_modules : belongs_to
+    faculties ||--o{ faculty_partner_universities : has_access
+    partner_universities ||--o{ faculty_partner_universities : available_to
+    partner_universities ||--o{ pu_modules : offers
+    nus_modules ||--o{ module_mappings : maps_to
+    pu_modules ||--o{ module_mappings : maps_to

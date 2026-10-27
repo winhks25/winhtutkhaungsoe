@@ -8,6 +8,7 @@ import ProjectFeatures from './ProjectFeatures.astro';
 import ProjectHero from './ProjectHero.astro';
 import ProjectLinks from './ProjectLinks.astro';
 import BikeDatalakehouseCaseStudy from './BikeDatalakehouseCaseStudy.astro';
+import NusExchangePlannerCaseStudy from './NusExchangePlannerCaseStudy.astro';
 
 interface Props {
   name: string;
@@ -74,12 +75,17 @@ const { name, content } = Astro.props;
     </div>
   </header>
   {content.caseStudy === 'bike-datalakehouse' && <BikeDatalakehouseCaseStudy />}
-  <ProjectSection id="contributions-heading" title="My Contributions">
-    <ProjectParagraphs
-      paragraphs={content.contributions}
-      format={content.contributionsFormat}
-    />
-  </ProjectSection>
+  {content.caseStudy === 'nus-exchange-planner' && (
+    <NusExchangePlannerCaseStudy />
+  )}
+  {content.contributions.length > 0 && (
+    <ProjectSection id="contributions-heading" title="My Contributions">
+      <ProjectParagraphs
+        paragraphs={content.contributions}
+        format={content.contributionsFormat}
+      />
+    </ProjectSection>
+  )}
   {content.features && content.features.length > 0 && (
     <ProjectSection id="features-heading" title="Key Features">
       <ProjectFeatures features={content.features} />
