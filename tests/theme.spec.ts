@@ -136,6 +136,8 @@ for (const path of [
   'work/comatch/',
   'work/fittix/',
   'work/mcnus/',
+  'work/nus-exchange-planner/',
+  'work/brewgo/',
   '404.html',
 ]) {
   test(`dark appearance accessibility: ${path || 'home'}`, async ({ page }) => {
