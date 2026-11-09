@@ -6,6 +6,7 @@ import communityPreview from '../assets/mcnus/preview.png';
 import bikeHero from '../assets/bike-datalakehouse/hero.png';
 import exchangePreview from '../assets/nus-exchange-planner/preview.png';
 import fittixUI from '../assets/fittix/fittixUI.png';
+import beansBeatsPreview from '../assets/beans&beats/beans&beats-preview.png';
 interface Props {
   variant: Project['slug'];
 }
@@ -14,17 +15,17 @@ const { variant } = Astro.props;
 
 <div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
   {variant === 'beans-beats-qms' && (
-    <div class="beans-beats-cover">
-      <span class="eyebrow">CHARITY COFFEE · IN PROGRESS</span>
-      <strong>
-        Beans&amp;Beats<span>.</span>
-      </strong>
-      <p>
-        Orders to pickup.
-        <br />
-        One smoother queue.
-      </p>
-      <span class="preview-label">ORDERS → QUEUE → COLLECTION</span>
+    <div class="screenshot-preview">
+      <Image
+        src={beansBeatsPreview}
+        alt=""
+        widths={[480, 800, 1200, 1600]}
+        sizes="(max-width: 760px) 100vw, 720px"
+        format="webp"
+        quality={90}
+        loading="lazy"
+      />
+      <span class="preview-label">BEANS&amp;BEATS QMS · APP PREVIEW</span>
     </div>
   )}
   {variant === 'nus-exchange-planner' && (
@@ -95,21 +96,6 @@ const { variant } = Astro.props;
 </div>
 
 <style>
-  .beans-beats-cover {
-    width: 100%;
-    padding: 32px;
-    color: var(--ink);
-    background: var(--surface);
-  }
-  .beans-beats-cover strong {
-    display: block;
-    margin-block: 24px 12px;
-    font-size: clamp(40px, 7vw, 72px);
-    letter-spacing: -0.04em;
-  }
-  .beans-beats-cover strong span {
-    color: var(--accent);
-  }
   .screenshot-preview {
     width: 100%;
     padding: 28px;
