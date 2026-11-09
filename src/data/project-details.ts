@@ -53,6 +53,7 @@ export type ProjectDetails = {
   contributions: ProjectParagraph[];
   contributionsFormat?: 'paragraphs' | 'list';
   features?: ProjectFeature[];
+  technicalHighlights?: ProjectFeature[];
   learnings: ProjectParagraph[];
   caseStudy?: 'bike-datalakehouse' | 'fittix' | 'nus-exchange-planner';
 };

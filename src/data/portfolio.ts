@@ -1,6 +1,6 @@
 import { comatchDetails } from './comatch';
 import { nusExchangePlannerDetails } from './nus-exchange-planner';
-import { brewgoDetails } from './brewgo';
+import { beansBeatsQmsDetails } from './beans-beats-qms';
 import { fittixDetails } from './fittix';
 import { bikeDatalakehouseDetails } from './bike-datalakehouse';
 import type { ProjectDetails } from './project-details';
@@ -23,7 +23,7 @@ export type Project = {
     | 'mcnus'
     | 'bike-datalakehouse'
     | 'nus-exchange-planner'
-    | 'brewgo';
+    | 'beans-beats-qms';
   number: string;
   name: string;
   category: string;
@@ -52,17 +52,18 @@ export const projects: Project[] = [
     details: nusExchangePlannerDetails,
   },
   {
-    slug: 'brewgo',
+    slug: 'beans-beats-qms',
     number: '02',
-    name: 'BrewGo',
-    category: 'FULL-STACK DEVELOPMENT',
-    headline: brewgoDetails.tagline,
+    name: 'Beans&Beats QMS',
+    category: 'FULL-STACK DEVELOPMENT · OPEN SOURCE',
+    headline: beansBeatsQmsDetails.tagline,
     description:
-      'A queue management system for a charity coffee booth, connecting staff orders, preparation progress, and customer pickup.',
+      'A queue management system for the Christmas Together 2026 charity coffee booth, connecting staff orders, barista preparation, and customer pickup.',
     period: 'In progress',
-    role: brewgoDetails.role,
-    stack: brewgoDetails.stack,
-    details: brewgoDetails,
+    role: beansBeatsQmsDetails.role,
+    stack: beansBeatsQmsDetails.stack,
+    repository: 'https://github.com/bnb-qms/beans-beats-qms',
+    details: beansBeatsQmsDetails,
   },
   {
     slug: 'fittix',

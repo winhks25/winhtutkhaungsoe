@@ -13,15 +13,16 @@ const { variant } = Astro.props;
 ---
 
 <div class:list={['project-art', `project-art-${variant}`]} aria-hidden="true">
-  {variant === 'brewgo' && (
-    <div class="brewgo-cover">
+  {variant === 'beans-beats-qms' && (
+    <div class="beans-beats-cover">
       <span class="eyebrow">CHARITY COFFEE · IN PROGRESS</span>
       <strong>
-        BrewGo<span>.</span>
+        Beans&amp;Beats<span>.</span>
       </strong>
       <p>
-        A smoother queue.
-        <br />A better coffee break.
+        Orders to pickup.
+        <br />
+        One smoother queue.
       </p>
       <span class="preview-label">ORDERS → QUEUE → COLLECTION</span>
     </div>
@@ -94,19 +95,19 @@ const { variant } = Astro.props;
 </div>
 
 <style>
-  .brewgo-cover {
+  .beans-beats-cover {
     width: 100%;
     padding: 32px;
     color: var(--ink);
     background: var(--surface);
   }
-  .brewgo-cover strong {
+  .beans-beats-cover strong {
     display: block;
     margin-block: 24px 12px;
     font-size: clamp(40px, 7vw, 72px);
     letter-spacing: -0.04em;
   }
-  .brewgo-cover strong span {
+  .beans-beats-cover strong span {
     color: var(--accent);
   }
   .screenshot-preview {

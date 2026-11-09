@@ -93,6 +93,14 @@ const { name, content } = Astro.props;
       <ProjectFeatures features={content.features} />
     </ProjectSection>
   )}
+  {content.technicalHighlights && content.technicalHighlights.length > 0 && (
+    <ProjectSection
+      id="technical-highlights-heading"
+      title="Technical Highlights"
+    >
+      <ProjectFeatures features={content.technicalHighlights} />
+    </ProjectSection>
+  )}
   {content.learnings.length > 0 && (
     <ProjectSection id="learnings-heading" title="What I Learned">
       <ProjectParagraphs paragraphs={content.learnings} />
