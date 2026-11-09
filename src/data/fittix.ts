@@ -18,6 +18,10 @@ export const fittixDetails = {
       label: 'Download Latest Version',
       href: 'https://github.com/AY2627S1-CS2103T-T14-1/tp/releases/',
     },
+    {
+      label: 'Product Website',
+      href: 'https://ay2627s1-cs2103t-t14-1.github.io/tp/',
+    },
   ],
   overview: [
     [
