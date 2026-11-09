@@ -1,4 +1,4 @@
-import fittixUI from '../assets/fittix/fittixUI.png';
+import fittixUI from '../assets/fittix/fittixUI.png?url';
 import type { ProjectDetails } from './project-details';
 
 // Source: the user-supplied Fittix.md.

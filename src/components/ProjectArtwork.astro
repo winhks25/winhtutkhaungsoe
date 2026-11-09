@@ -5,7 +5,7 @@ import comatchPreview from '../assets/comatch/preview.png';
 import communityPreview from '../assets/mcnus/preview.png';
 import bikeHero from '../assets/bike-datalakehouse/hero.png';
 import exchangePreview from '../assets/nus-exchange-planner/preview.png';
-import fittixUI from '../assets/fittix/fittixUI.png';
+import fittixUI from '../assets/fittix/fittixUI.png?url';
 import beansBeatsPreview from '../assets/beans&beats/beans&beats-preview.png';
 interface Props {
   variant: Project['slug'];
@@ -67,15 +67,7 @@ const { variant } = Astro.props;
   )}
   {variant === 'fittix' && (
     <div class="screenshot-preview fittix-preview">
-      <Image
-        src={fittixUI}
-        alt=""
-        widths={[480, 800, 1200, 1600, 2000]}
-        sizes="(max-width: 760px) 100vw, 720px"
-        format="webp"
-        quality={90}
-        loading="lazy"
-      />
+      <img src={fittixUI} alt="" loading="lazy" />
       <span class="preview-label">FITTIX · APP SCREENSHOT</span>
     </div>
   )}

@@ -28,7 +28,7 @@ export type ProjectFeature = {
 };
 
 export type ProjectHeroImage = {
-  image: ImageMetadata;
+  image: ImageMetadata | string;
   alt: string;
 };
 
