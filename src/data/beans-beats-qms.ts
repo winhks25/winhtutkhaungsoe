@@ -1,5 +1,5 @@
 import type { ProjectDetails } from './project-details';
-import preview from '../assets/beans&beats/beans&beats-preview.png'; 
+import preview from '../assets/beans&beats/beans&beats-preview.png';
 
 export const beansBeatsQmsDetails = {
   tagline: 'Orders, queues, and pickup in one place.',
