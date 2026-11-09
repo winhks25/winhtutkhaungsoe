@@ -1,10 +1,11 @@
 import type { ProjectDetails } from './project-details';
+import preview from '../assets/beans&beats/beans&beats-preview.png'; 
 
 export const beansBeatsQmsDetails = {
   tagline: 'Orders, queues, and pickup in one place.',
   hero: {
-    artwork: 'beans-beats-qms',
-    alt: 'Beans&Beats QMS project cover for the charity coffee booth.',
+    image: preview,
+    alt: 'Beans&Beats QMS Preview.',
   },
   links: [
     {
