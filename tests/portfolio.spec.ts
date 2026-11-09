@@ -203,19 +203,11 @@ test('blocked clipboard access offers a usable fallback', async ({ page }) => {
   ).toHaveAttribute('href', 'mailto:winhks@u.nus.edu');
 });
 
-test('download delivers the actual PDF from the repository base path', async ({
-  page,
-  request,
-}) => {
+test('resume download link is absent', async ({ page }) => {
   await page.goto(base);
-  const downloadEvent = page.waitForEvent('download');
-  await page.getByRole('link', { name: 'Download résumé' }).click();
-  const download = await downloadEvent;
-  expect(download.suggestedFilename()).toBe('Win-Htut-Khaung-Soe-Resume.pdf');
-  expect(await download.failure()).toBeNull();
-  const response = await request.get(`${base}resume.pdf`);
-  expect(response.status()).toBe(200);
-  expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-');
+  await expect(page.getByRole('link', { name: 'Download résumé' })).toHaveCount(
+    0,
+  );
 });
 
 for (const path of [
